@@ -1,7 +1,8 @@
 Proposal
 
 Leading Question: 
-Knowing the power of network analysis, we will represent network as graph structure. Finding the shortest distance between two nodes. Finding the node with the most network connected within a designated area.
+Knowing the power of network analysis, we will represent network as graph structure. Finding the shortest distance between two nodes.
+Finding the node with the most network connected within a designated area.
 
 Dataset Acquisition and Processing:
 Data format: 
