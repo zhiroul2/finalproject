@@ -32,4 +32,8 @@ Function Efficiency: O(V+E) where V = vertices and E = edges
 
 Timeline:
 The first target for us is to set up the whole project and perform the data
-correction and data storage steps. This will take about a week so it should be done by 4.1.Then we will be construct the graph class, which should be done by 4.8.The shortest path should take approximately a week.By 4.15 our progress should be on the right track.The strongly connected components algorithm could take up a week or two depending on the circumstances.If we still have time, we will visualize the data as png output. The majority of this should be done by 4.29.Then we will use the last week to make sure we have deliverable code and prepare for the final presentation.
+correction and data storage steps. This will take about a week so it should be done by 4.1.
+Then we will be construct the graph class, which should be done by 4.8.The shortest path should take approximately a week.
+By 4.15 our progress should be on the right track.The strongly connected components algorithm could take up a week or two depending on the circumstances.
+If we still have time, we will visualize the data as png output. The majority of this should be done by 4.29.
+Then we will use the last week to make sure we have deliverable code and prepare for the final presentation.
