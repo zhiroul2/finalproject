@@ -1,0 +1,39 @@
+Proposal
+
+Leading Question: 
+Knowing the power of network analysis, we will represent network as graph structure. Finding the shortest distance between two nodes.
+Finding the node with the most network connected within a designated area.
+
+Dataset Acquisition and Processing:
+Data format: 
+it's a set of road network nodes of San Fran, and it's represented by each node by x–longitude and y-latitude axis. 
+https://www.cs.utah.edu/~lifeifei/research/tpq/SF.cnode 
+https://www.cs.utah.edu/~lifeifei/research/tpq/SF.cedge  
+
+Data correction: 
+we will make test cases to check the order of the data, and if they have missing nodes, and the order of the data on whether it follows an increasing order. 
+Data storage: 
+We will store the data points by map, which key is the index and the value is the pair of coordinates.
+
+
+Graph Algorithms:
+        Dijkstra’s Algorithm
+Function Inputs: 
+A start node
+An end node
+Function Output:Shortest path made up of node id as a string,return “”if not found.
+Function Efficiency:O(V^2) where V represents the edges of the graph
+
+	   Strongly connected components
+ Function Inputs: A graph object
+Function output:Stack of connected components
+Function Efficiency: O(V+E) where V = vertices and E = edges 
+
+
+Timeline:
+The first target for us is to set up the whole project and perform the data
+correction and data storage steps. This will take about a week so it should be done by 4.1.
+Then we will be construct the graph class, which should be done by 4.8.The shortest path should take approximately a week.
+By 4.15 our progress should be on the right track.The strongly connected components algorithm could take up a week or two depending on the circumstances.
+If we still have time, we will visualize the data as png output. The majority of this should be done by 4.29.
+Then we will use the last week to make sure we have deliverable code and prepare for the final presentation.
