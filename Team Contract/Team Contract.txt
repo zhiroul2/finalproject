@@ -17,6 +17,7 @@ Conflict Resolution
 - All conflicts within the team must be solved via voting.
 
 Signatures
+
 Zhirou Liu (zhiroul2)
 Selena Wang (xwang320)
 Jiangman Huang (jh80)
