@@ -1,43 +1,51 @@
-Proposal
+Final Project Proposal
 
 Leading Question: 
 Knowing the power of network analysis, we will represent network as graph structure. Finding the shortest distance between two nodes.
-Finding the node with the most network connected within a designated area.
+Finding the node with the most network connected within a designated area. Represent the data in the form of a graph. 
 
 Dataset Acquisition and Processing:
 Data format: 
-it's a set of road network nodes of San Fran, and it's represented by each node by x–longitude and y-latitude axis. 
+it's a set of road network nodes of San Fran, and it's represented by each node by x–longitude and y-latitude axis. One dataset also provided the nodes with specific node ID to uniquely identify each node as a single road network. The datasets are a reasonable size providing that it includes the necessary amount of road newwork nodes needed to perform necessary analysis. We plan on using the full dataset because the data set represents a full road network of San Fran, and by analyzing the full dataset, we would get a more percise result.
 https://www.cs.utah.edu/~lifeifei/research/tpq/SF.cnode 
 https://www.cs.utah.edu/~lifeifei/research/tpq/SF.cedge  
+*The above links are the links to the dataset that we will be using*
 
 Data correction: 
-we will make test cases to check the order of the data, and if they have missing nodes, and the order of the data on whether it follows an increasing order. 
-Data storage: 
-We will store the data points by map, which key is the index and the value is the pair of coordinates.
+We will implement functions that check for the order of the data, whether they have any missing nodes, and the order of the data on whether it follows an increasing order. Every node should only have one unique node ID, or identifying information, and we would check for redundancy. The checks can be done by checking the node ID which should be uniquely assigned. We will also implement test cases to check for each of the correctness of the functions. The ideal data structure should include nodes with their unique node ID, each node possess a (x,y) coordinate. 
 
+Data storage: 
+We will store the data points by using the standard library map, in which the key is corresponding to the node ID and the value is a pair of x and y coordinates in the form of (x,y), meaning the first element in the pair should be corresponding to the x coordinate and the second element in the pair should be the y coordinate of the location of the node on a graph. We would also be using the standard library data structures to help processing our data/ preform necessary algorthms, such as vectors and etc. The storage memory used for the dataset should be O(n) providing that n is the number of road networks in San Fran. The target goal for time is O(log n). 
+
+Traversal to use:
+DFS
 
 Graph Algorithms:
-        Dijkstra’s Algorithm
-Function Inputs: 
-A start node
-An end node
-Function Output:Shortest path made up of node id as a string,return “”if not found.
-Function Efficiency:O(V^2) where V represents the edges of the graph
+Dijkstra’s Algorithm
+Tarjan's strongly connecred components algorithm
 
-	   Strongly connected components
- Function Inputs: A graph object
-Function output:Stack of connected components
-Function Efficiency: O(V+E) where V = vertices and E = edges 
+Function Inputs: 
+Dijkstra’s Algorithm: A start node, An end node
+Tarjan's Algorithm: A graph object
+
+Function Output: 
+Dijkstra’s Algorithm: Shortest path made up of node id as a string, return “” if not found.
+Tarjan's Algorithm: a set of vertices (in a stack form) that includes the connected components.
+
+Function Efficiency: 
+Dijkstra’s Algorithm: O(V^2) where V represents the edges of the graph.
+Tarjan's Algorithm: O(V+E) where V = vertices and E = edges 
 
 
 Timeline:
-The first target for us is to set up the whole project and perform the data
-correction and data storage steps. This will take about a week so it should be done by 4.1.
+The first target for us is to set up the whole project and perform the data correction and data storage steps. 
+This will take about a week so it should be done by 4.1.
 Then we will be construct the graph class, which should be done by 4.8.The shortest path should take approximately a week.
-By 4.15 our progress should be on the right track.The strongly connected components algorithm could take up a week or two depending on the circumstances.
+By 4.15 our progress should be on the right track. The strongly connected components algorithm could take up a week or two depending on the circumstances.
 If we still have time, we will visualize the data as png output. The majority of this should be done by 4.29.
 Then we will use the last week to make sure we have deliverable code and prepare for the final presentation.
 
+*The above information may change depending on the situation, but the work should be roughly done by the specified due date above*
 
 netID:
 jh80
