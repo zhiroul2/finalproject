@@ -6,16 +6,28 @@ Finding the node with the most network connected within a designated area. Repre
 
 Dataset Acquisition and Processing:
 Data format: 
-it's a set of road network nodes of San Fran, and it's represented by each node by x–longitude and y-latitude axis. One dataset also provided the nodes with specific node ID to uniquely identify each node as a single road network. The datasets are a reasonable size providing that it includes the necessary amount of road newwork nodes needed to perform necessary analysis. We plan on using the full dataset because the data set represents a full road network of San Fran, and by analyzing the full dataset, we would get a more percise result.
+it's a set of road network nodes of San Fran, and it's represented by each node by x–longitude and y-latitude axis.
+One dataset also provided the nodes with specific node ID to uniquely identify each node as a single road network.
+The datasets are a reasonable size providing that it includes the necessary amount of road newwork nodes needed to perform necessary 
+analysis. We plan on using the full dataset because the data set represents a full road network of San Fran, and by analyzing the full
+dataset, we would get a more percise result.
 https://www.cs.utah.edu/~lifeifei/research/tpq/SF.cnode 
 https://www.cs.utah.edu/~lifeifei/research/tpq/SF.cedge  
 *The above links are the links to the dataset that we will be using*
 
 Data correction: 
-We will implement functions that check for the order of the data, whether they have any missing nodes, and the order of the data on whether it follows an increasing order. Every node should only have one unique node ID, or identifying information, and we would check for redundancy. The checks can be done by checking the node ID which should be uniquely assigned. We will also implement test cases to check for each of the correctness of the functions. The ideal data structure should include nodes with their unique node ID, each node possess a (x,y) coordinate. 
+We will implement functions that check for the order of the data, whether they have any missing nodes, and the order of the data on
+whether it follows an increasing order. 
+Every node should only have one unique node ID, or identifying information, and we would check for redundancy. 
+The checks can be done by checking the node ID which should be uniquely assigned. We will also implement test cases to check for each of the correctness of the functions. 
+The ideal data structure should include nodes with their unique node ID, each node possess a (x,y) coordinate. 
 
 Data storage: 
-We will store the data points by using the standard library map, in which the key is corresponding to the node ID and the value is a pair of x and y coordinates in the form of (x,y), meaning the first element in the pair should be corresponding to the x coordinate and the second element in the pair should be the y coordinate of the location of the node on a graph. We would also be using the standard library data structures to help processing our data/ preform necessary algorthms, such as vectors and etc. The storage memory used for the dataset should be O(n) providing that n is the number of road networks in San Fran. The target goal for time is O(log n). 
+We will store the data points by using the standard library map, in which the key is corresponding to the node ID and the value is a
+pair of x and y coordinates in the form of (x,y), meaning the first element in the pair should be corresponding to the x coordinate
+and the second element in the pair should be the y coordinate of the location of the node on a graph. 
+We would also be using the standard library data structures to help processing our data/ preform necessary algorthms, such as vectors and etc. 
+The storage memory used for the dataset should be O(n) providing that n is the number of road networks in San Fran. The target goal for time is O(log n). 
 
 Traversal to use:
 DFS
