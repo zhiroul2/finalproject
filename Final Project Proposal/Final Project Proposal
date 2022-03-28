@@ -19,8 +19,11 @@ Data correction:
 We will implement functions that check for the order of the data, whether they have any missing nodes, and the order of the data on
 whether it follows an increasing order. 
 Every node should only have one unique node ID, or identifying information, and we would check for redundancy. 
-The checks can be done by checking the node ID which should be uniquely assigned. We will also implement test cases to check for each of the correctness of the functions. 
+The checks can be done by checking the node ID which should be uniquely assigned. We will also implement test cases to check for each of the correctness of the functions.
 The ideal data structure should include nodes with their unique node ID, each node possess a (x,y) coordinate. 
+And each edge should have corresponding start node and end node that align with the node data we provided, also the edge ID should be unique.The L2 distance of each node should be postive.
+
+
 
 Data storage: 
 We will store the data points by using the standard library map, in which the key is corresponding to the node ID and the value is a
