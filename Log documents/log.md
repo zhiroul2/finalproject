@@ -8,5 +8,6 @@ Finished the data correction and data storage for NodeData
 xwang320:
 
 Added testcase for the nodeData function.
+fixed edgeData function.
 
 Summary:
