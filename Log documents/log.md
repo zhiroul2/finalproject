@@ -5,4 +5,8 @@ Complete the makefile for main to be executed.
 Put the data in place.
 Finished the data correction and data storage for NodeData
 
+xwang320:
+
+Added testcase for the nodeData function.
+
 Summary:
