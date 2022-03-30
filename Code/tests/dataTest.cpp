@@ -1,9 +1,9 @@
 #include "data_correction.h"
 #include <catch.hpp>
 
-TEST_CASE("files successfully loaded, check for correct format", "nodeData()") {
-    map<int, Coordinate> test = nodeData("Code/Data/NodeData.txt");
-    REQUIRE(test.size() >= 0);
+TEST_CASE("files successfully loaded, check for all positive data", "[nodeData()]") {
+    map<int, Coordinate> test = nodeData("Code/Data/DataCorrection.txt");
+    REQUIRE(test.size() == 4);
 
     SECTION("coordinates are all positive") {
         bool tf = true;
@@ -18,12 +18,25 @@ TEST_CASE("files successfully loaded, check for correct format", "nodeData()") {
 
     SECTION("nodeID are all positive") {
         bool tf = true;
-        for(auto it = test.begin(); it != test.end(); ++it) {
+        for (auto it = test.begin(); it != test.end(); ++it) {
             if (it->first < 0) {
                 tf = false;
                 break;
             }
         }
         REQUIRE(tf == true);
+    }
+}
+
+TEST_CASE("data processed should end up with no duplicates", "[nodeData()]") {
+    map<int, Coordinate> test = nodeData("Code/Data/DuplicateData.txt");
+    REQUIRE(test.size() == 5);
+
+    SECTION("nodeID should change accordingling to accommodate for the duplicates") {
+        int previous = 0;
+        for (auto it = test.begin(); it != test.end(); ++it) {
+            REQUIRE(it->first == previous + 1);
+            previous++;
+        }
     }
 }
