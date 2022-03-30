@@ -2,6 +2,7 @@
 #include<iostream>
 #include <vector>
 #include<fstream>
+
 using namespace std;
 /**
 The function takes input of the filename of the Node data file
@@ -10,7 +11,7 @@ In this function, we will take the input, read the input, and store the correct 
 If the Node ID is negative or the coordinates are negative, the value would be excluded.
 If there are mutiple copies of 1 Node ID, only 1 line would be stored.
 **/
-map<int, Coordinate> nodeData(string filename){
+map<int, Coordinate> nodeData(string filename) {
     map<int, Coordinate> vect;
     ifstream myfile;
     string line;
@@ -19,8 +20,8 @@ map<int, Coordinate> nodeData(string filename){
       perror("Error open");
       exit(EXIT_FAILURE);
    }
-   int id;double x; double y;
-    while(myfile >> id >> x >> y) {
+   int id; double x; double y;
+    while (myfile >> id >> x >> y) {
         if (id >= 0 and x >= 0 and y >= 0){
             Coordinate a;
             a.x = x;
