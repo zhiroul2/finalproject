@@ -31,3 +31,25 @@ map<int, Coordinate> nodeData(string filename) {
     }
     return vect;
 }
+
+map<int, Coordinate> edgeData(string filename){
+    map<int, Coordinate> vect;
+    ifstream myfile;
+    string line;
+    myfile.open(filename);
+    if(!myfile.is_open()) {
+      perror("Error open");
+      exit(EXIT_FAILURE);
+   }
+   int id; int x; int y; double z;
+    while(myfile >> id >> x >> y >> z) {
+        if (id >= 0 && x >= 0 && y >= 0 && z >= 0){
+            Coordinate a;
+            a.x = x;
+            a.y = y;
+            a.z = z;
+            vect[id] = a;
+        }
+    }
+    return vect;
+}

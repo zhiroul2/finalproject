@@ -17,4 +17,3 @@ If the Node ID is negative or the coordinates are negative, the value would be e
 If there are mutiple copies of 1 Node ID, only 1 line would be stored.
 */
 map<int, Coordinate> nodeData(string filename);
-
