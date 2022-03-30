@@ -16,3 +16,4 @@ If there are mutiple copies of 1 Node ID, only 1 line would be stored.
 **/
 
 map<int, Coordinate> nodeData(string filename);
+map<int, Coordinate> edgeData(string filename);
