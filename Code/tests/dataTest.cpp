@@ -40,3 +40,30 @@ TEST_CASE("data processed should end up with no duplicates", "[nodeData()]") {
         }
     }
 }
+
+TEST_CASE("files successfully loaded, check for all positive data", "[edgeData()]") {
+    map<int, EdgeData> test = edgeData("Code/Data/DataCorrection.txt");
+    REQUIRE(test.size() == 4);
+    
+    SECTION("start nodes, end nodes, and distances are all positive") {
+        bool tf = true;
+        for (unsigned i = 0; i < test.size(); i++){
+            if (test[i].start < 0 || test[i].end < 0 || test[i].distance < 0) {
+                tf = false;
+                break;
+            }
+        }
+        REQUIRE(tf == true);
+    }
+    
+    SECTION("edgeID are all positive") {
+        bool tf = true;
+        for (auto it = test.begin(); it != test.end(); ++it) {
+            if (it->first < 0) {
+                tf = false;
+                break;
+            }
+        }
+        REQUIRE(tf == true);
+    }
+}
