@@ -1,8 +1,10 @@
 Final Project Proposal
 
 Leading Question: 
-Knowing the power of network analysis, we will represent network as graph structure. Finding the shortest distance between two nodes.
-Finding the node with the most network connected within a designated area. Represent the data in the form of a graph. 
+Knowing the power of network analysis, we will represent network as graph structure.The motivation here is to implement actual application that can be useful in networks.
+Finding the shortest path between two nodes, since a singal may be sent from a start node to a end node.
+Finding the node with the most network connected within a designated area, and possibility color them in order to distinguish the structure of the graph.
+Represent the data in the form of a graph. 
 
 Dataset Acquisition and Processing:
 Data format: 
@@ -33,7 +35,7 @@ We would also be using the standard library data structures to help processing o
 The storage memory used for the dataset should be O(n) providing that n is the number of road networks in San Fran. The target goal for time is O(log n). 
 
 Traversal to use:
-DFS
+BFS,since we are going to consider adjacency list and BFS is a better choice for traversal in graphs.
 
 Graph Algorithms:
 Dijkstra’s Algorithm
