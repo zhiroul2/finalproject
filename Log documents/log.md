@@ -20,6 +20,9 @@ Added testcase for the nodeData function.
 fixed edgeData function.
 
 
+mukyehc2:
+
+Added testcases for edgeData function.
 
 
 Summary:
