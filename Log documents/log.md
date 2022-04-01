@@ -25,6 +25,8 @@ mukyehc2:
 Added testcases for edgeData function.
 
 
+
+
 Summary:
 
 Overall managed to achieve our goal for the first week.The makefile and setup is working.The data is cleaned and stored in proper data structures that will be used in the graph class,which we will implement next week.Still something to be discussed for important implementation details and adjust our proposal based on the feedback.The in-team communication went well.
