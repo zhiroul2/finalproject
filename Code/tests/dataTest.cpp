@@ -1,5 +1,5 @@
-#include "data_correction.h"
-#include <catch.hpp>
+#include "../data_correction.h"
+#include "../catch.hpp"
 
 TEST_CASE("files successfully loaded, check for all positive data", "[nodeData()]") {
     map<int, Coordinate> test = nodeData("Code/Data/DataCorrection.txt");

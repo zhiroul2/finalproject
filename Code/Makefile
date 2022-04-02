@@ -4,8 +4,8 @@ EXE = main
 TEST = test
 
 # Add all object files needed for compiling:
-EXE_OBJ = main.o 
-OBJS = main.o 
+EXE_OBJ = main.o test.o
+OBJS = main.o test.o 
 
 # Generated files
 //CLEAN_RM = actual-*.png
