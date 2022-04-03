@@ -48,7 +48,7 @@ TEST_CASE("files successfully loaded, check for all positive data", "[edgeData()
     SECTION("start nodes, end nodes, and distances are all positive") {
         bool tf = true;
         for (unsigned i = 0; i < test.size(); i++){
-            if (test[i].start < 0 || test[i].end < 0 || test[i].distance < 0) {
+            if (test[i].startNode < 0 || test[i].endNode < 0 || test[i].distance >= 0) {
                 tf = false;
                 break;
             }

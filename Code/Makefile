@@ -3,12 +3,27 @@
 EXE = main
 TEST = test
 
-# Add all object files needed for compiling:
-EXE_OBJ = main.o test.o
-OBJS = main.o test.o 
+# objects
+OBJS = main.o data_correction.o
 
-# Generated files
-//CLEAN_RM = actual-*.png
+CXX = clang++
+
+CXXFlAGS = $(cs225) -std=c+=14-stdlibc++ -c -g -O0 -Wall -Wextra -pedantic
+
+#include make/customClangEnforcement.mk
+
+
+all : $(EXE)
+
+$(EXE) : $(OBJS) 
+	clang++ $(OBJS) -std=c++14 -stdlib=libc++ -lc++abi -lm -o $(EXE)
 
 # Use the cs225 makefile template:
 include cs225.mk
+
+data_correction.o : data_correction.cpp
+	$(CXX) $(CXXFLAGS) data_correction.cpp
+
+test : data_correction.cpp cs225/catch/catchmain.cpp tests/dataTest.cpp
+	clang++ data_correction.cpp cs225/catch/catchmain.cpp tests/dataTest.cpp -std=c++14 -stdlib=libc++ -lc++abi -lm -o test
+

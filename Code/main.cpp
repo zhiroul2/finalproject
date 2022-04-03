@@ -2,7 +2,8 @@
 #include<vector>
 #include "data_correction.h"
 using namespace std;
-int main(){
+
+int main() {
     map<int, Coordinate> vect = nodeData("./Data/NodeData.txt");
     return 1;
 }
