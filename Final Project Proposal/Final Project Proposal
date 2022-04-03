@@ -50,7 +50,7 @@ Dijkstra’s Algorithm: Shortest path made up of node id as a string, return “
 Tarjan's Algorithm: a set of vertices (in a stack form) that includes the connected components.
 
 Function Efficiency: 
-Dijkstra’s Algorithm: O(V^2) where V represents the edges of the graph.
+Dijkstra’s Algorithm: O(V^2) where V represents the vertices of the graph.
 Tarjan's Algorithm: O(V+E) where V = vertices and E = edges 
 
 
