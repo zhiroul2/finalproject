@@ -38,7 +38,7 @@ We would also be using the standard library data structures to help processing o
 The storage memory used for the dataset should be O(n) providing that n is the number of road networks in San Fran. The target goal for time is O(log n). 
 
 Traversal to use:
-BFS,since we are going to consider adjacency list and BFS is a better choice for traversal in graphs.
+DFS,since our initial data conatins the L2 distance, we are dealing with a weighted graph,thus BFS is a better choice for traversal in graphs.
 
 Graph Algorithms:
 Dijkstra’s Algorithm
