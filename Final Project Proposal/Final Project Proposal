@@ -1,14 +1,17 @@
 Final Project Proposal
 
 Leading Question: 
-Knowing the power of network analysis, we will represent network as graph structure.The motivation here is to implement actual application that can be useful in networks.
-Finding the shortest path between two nodes, since a singal may be sent from a start node to a end node.
-Finding the node with the most network connected within a designated area, and possibility color them in order to distinguish the structure of the graph.
-Represent the data in the form of a graph. 
+Knowing the power of network analysis, we will represent network as graph structure. The motivation here is to implement actual application that can be useful in networks.
+We will be mainly focusing on two leading questions:
+First, how to find the shortest path between two nodes, given the coordinats of every node and the distances between every two nodes on the map.
+Second, how to find an area that has the most concentrated nodes connections, and possibility color them in order to distinguish the structure of the graph.
+In order to solve these two problems, one algorithm is to find the shortest route and distance between two nodes, and another one is to find some nodes that has much more connections and degrees than other nodes (thus could find some areas that are more concentrated with nodes and edges).
+We will use the dataset that contains the information of the x and y coordinates of every eixsted node in a city, the distance between two nodes, the nodeID, and the edgeID. We will be using these information to approach the leading questions raised above.
+We will also represent the data in the form of a graph. 
 
 Dataset Acquisition and Processing:
 Data format: 
-it's a set of road network nodes of San Fran, and it's represented by each node by x–longitude and y-latitude axis.
+it's a set of road network nodes of San Franccisco, and it's represented by each node by x–longitude and y-latitude axis.
 One dataset also provided the nodes with specific node ID to uniquely identify each node as a single road network.
 The datasets are a reasonable size providing that it includes the necessary amount of road newwork nodes needed to perform necessary 
 analysis. We plan on using the full dataset because the data set represents a full road network of San Fran, and by analyzing the full
@@ -39,7 +42,7 @@ BFS,since we are going to consider adjacency list and BFS is a better choice for
 
 Graph Algorithms:
 Dijkstra’s Algorithm
-Tarjan's strongly connecred components algorithm
+Tarjan's strongly connected components algorithm
 
 Function Inputs: 
 Dijkstra’s Algorithm: A start node, An end node
@@ -50,7 +53,7 @@ Dijkstra’s Algorithm: Shortest path made up of node id as a string, return “
 Tarjan's Algorithm: a set of vertices (in a stack form) that includes the connected components.
 
 Function Efficiency: 
-Dijkstra’s Algorithm: O(V^2) where V represents the vertices of the graph.
+Dijkstra’s Algorithm: O(V+E*log(V)) by using min-priority queue. V represents the vertices of the graph and E represents the edges of the graph.
 Tarjan's Algorithm: O(V+E) where V = vertices and E = edges 
 
 
