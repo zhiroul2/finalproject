@@ -31,6 +31,10 @@ class RoadNetwork {
         Returns a string consist of the node visted in the path
         */
         std::string shortestPath(int start, int end);
+        /*
+
+        */
+        std::vector<std::vector<int>> stronglyConnected();
         
     private:
         //nodes
