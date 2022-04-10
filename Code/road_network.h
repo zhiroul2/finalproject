@@ -30,17 +30,10 @@ class RoadNetwork {
             double distance;
         };
         /*
-        @param the data contains information about the edgeData
-        distance function finds the distances between two connected network nodes and sort them into a vector
-        Returns a vector of double (distances) of any two nodes that are connected
-        Helper for the shortestPath function
+        shortestPath find the distances between the start node and the end node.
+        Returns a string consist of the node visted in the path
         */
-        std::vector<double> distance(std::map<int, EdgeData> data);
-        /*
-        shortestPath comapres the distances between two nodes and finding the start and end node which has the shortest path
-        Returns a pair of int with the first being the start nodeID and the second is the end nodeID
-        */
-        std::pair<int, int> shortestPath();
+        std::string shortestPath(int start, int end);
         
     private:
         //nodes
