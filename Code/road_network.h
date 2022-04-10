@@ -13,7 +13,7 @@ class RoadNetwork {
         void addNode(int id, int x, int y);
         /* add edge to the adjacency list
         */
-        void addEdge(Node start, Node end, double distance);
+        void addEdge(Node* start, Node* end, double distance);
         class Node{
             public:
             int NodeID_;
