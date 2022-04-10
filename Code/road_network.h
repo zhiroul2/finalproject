@@ -3,14 +3,11 @@
 #include <vector>
 #include "stdlib.h"
 
-
-#include "data_correction.h"
-
 class RoadNetwork {
     public:
-        /* The constructor for the RoadNetwork class
+        /* The destructor for the RoadNetwork class
         */
-        RoadNetwork(std::map<int, Coordinate> nodeData, std::map<int, EdgeData> edgeData);
+        ~RoadNetwork();
         /* add node to the graph
         */
         void addNode(int id, int x, int y);
