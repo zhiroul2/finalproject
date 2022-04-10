@@ -4,9 +4,10 @@ EXE = main
 TEST = test
 
 # objects
-OBJS = main.o data_correction.o
+# Add all object files needed for compiling:
+EXE_OBJ = main.o 
+OBJS = main.o 
 
-CXX = clang++
 
 CXXFlAGS = $(cs225) -std=c+=14-stdlibc++ -c -g -O0 -Wall -Wextra -pedantic
 
@@ -21,9 +22,9 @@ $(EXE) : $(OBJS)
 # Use the cs225 makefile template:
 include cs225.mk
 
-data_correction.o : data_correction.cpp
-	$(CXX) $(CXXFLAGS) data_correction.cpp
+$(EXE) : $(TEST) 
+	clang++ $(OBJS) -std=c++14 -stdlib=libc++ -lc++abi -lm -o $(EXE)
 
-test : data_correction.cpp cs225/catch/catchmain.cpp tests/dataTest.cpp
-	clang++ data_correction.cpp cs225/catch/catchmain.cpp tests/dataTest.cpp -std=c++14 -stdlib=libc++ -lc++abi -lm -o test
+
+
 
