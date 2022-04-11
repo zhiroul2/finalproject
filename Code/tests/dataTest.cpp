@@ -41,7 +41,7 @@ TEST_CASE("data processed should end up with no duplicates", "[nodeData()]") {
     }
 }
 
-TEST_CASE("files successfully loaded, check for all positive data", "[edgeData()]") {
+TEST_CASE("files successfully loaded, check for all positive data for edge", "[edgeData()]") {
     map<int, EdgeData> test = edgeData("Code/Data/DataCorrection.txt");
     REQUIRE(test.size() == 4);
     

@@ -2,19 +2,22 @@
 #include<vector>
 #include "data_correction.h"
 #include "road_network.h"
+
 using namespace std;
 
 int main() {
     map<int, Coordinate> vect = nodeData("./Data/NodeData.txt");
     map<int, EdgeData> edge = edgeData("./Data/EdgeData.txt");
+    cout<<(vect.size())<<endl;
+    cout<<edge.size()<<endl;
+    //After the data correction, we decided on the adj list implmentation since m << n^2
     RoadNetwork graph = RoadNetwork();
-    //graph.shortestPath(1, 0);
-    cout<<vect[0].x<<endl;
-    //graph.addNode(0, 1.3, 1.3);
     for (auto a: vect) {
-        cout<<a.second.x<<endl;
         graph.addNode(a.first, a.second.x, a.second.y);
     }
-
-    return 0;
+    for (auto b: edge){
+        graph.addEdge(b.second.startNode, b.second.endNode, b.second.distance);
+    }
+    graph.viewGraph();
+    return 1;
 }

@@ -6,7 +6,7 @@ TEST = test
 # objects
 # Add all object files needed for compiling:
 EXE_OBJ = main.o 
-OBJS = main.o 
+OBJS = main.o data_correction.o road_network.o 
 
 
 CXXFlAGS = $(cs225) -std=c+=14-stdlibc++ -c -g -O0 -Wall -Wextra -pedantic
@@ -15,7 +15,6 @@ CXXFlAGS = $(cs225) -std=c+=14-stdlibc++ -c -g -O0 -Wall -Wextra -pedantic
 
 
 all : $(EXE)
-
 $(EXE) : $(OBJS) 
 	clang++ $(OBJS) -std=c++14 -stdlib=libc++ -lc++abi -lm -o $(EXE)
 
@@ -24,6 +23,7 @@ include cs225.mk
 
 $(EXE) : $(TEST) 
 	clang++ $(OBJS) -std=c++14 -stdlib=libc++ -lc++abi -lm -o $(EXE)
+
 
 
 

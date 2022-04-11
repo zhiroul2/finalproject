@@ -15,7 +15,7 @@ LD = clang++
 OBJS_DIR = .objs
 
 # Add standard CS 225 object files
-OBJS += data_correction.o road_network.o 
+OBJS += 
 
 # -MMD and -MP asks clang++ to generate a .d file listing the headers used in the source code for use in the Make process.
 #   -MMD: "Write a depfile containing user headers"
