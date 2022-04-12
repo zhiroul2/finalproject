@@ -8,8 +8,6 @@ using namespace std;
 int main() {
     map<int, Coordinate> vect = nodeData("./Data/NodeData.txt");
     map<int, EdgeData> edge = edgeData("./Data/EdgeData.txt");
-    //cout<<(vect.size())<<endl;
-    //cout<<edge.size()<<endl;
     //After the data correction, we decided on the adj list implmentation since m << n^2
     RoadNetwork graph = RoadNetwork();
     for (auto a: vect) {
