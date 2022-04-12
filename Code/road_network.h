@@ -36,15 +36,16 @@ class RoadNetwork {
         
         void addNode(int id, double x, double y);
         void viewGraph();
-
+        int EdgeNumber();
+        int NodeNumber();
         /* add edge to the adjacency list
         */
         void addEdge(int start, int end, double distance);
         /*
         shortestPath find the distances between the start node and the end node.
-        Returns a vector consist of the node ID visted in the path
+        Returns the length of the graph
         */
-        vector<int> shortestPath(int start, int end);
+        double shortestPath(int start, int end);
         /*
 
         */
@@ -52,10 +53,7 @@ class RoadNetwork {
     private:
         //nodes
         vector<Node*> Nodelist_;
-        /*
-        @para NodeID for the start node
-        helper function for shortest path
-        */
+        int edge;
        
 
 };
