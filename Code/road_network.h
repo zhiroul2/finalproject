@@ -42,9 +42,9 @@ class RoadNetwork {
         void addEdge(int start, int end, double distance);
         /*
         shortestPath find the distances between the start node and the end node.
-        Returns a string consist of the node visted in the path
+        Returns a vector consist of the node ID visted in the path
         */
-        double shortestPath(int start, int end);
+        vector<int> shortestPath(int start, int end);
         /*
 
         */

@@ -17,18 +17,30 @@ void RoadNetwork::addEdge(int start, int end, double distance){
         }
     }
 }
- double RoadNetwork::shortestPath(int start, int end){
-     double dist = 0;
-     if (start == end){
-         return 0;
-     } 
+vector<int> RoadNetwork::shortestPath(int start, int end){
+     vector<int> predecessor;
+     vector<int> path;
      int size = Nodelist_.size(); //size of the graph
+     if (!(0 <= start <= size) or !(0 <= start <= size)){
+         path.push_back(-1000); // No node exist, warning signal
+         return path;
+     }
+     if (start == end){
+         return path;
+     }
+     priority_queue<pair<double, Node*>, vector<pair<double, Node*>>,
+      std::greater<pair<double, Node*>>> check;
      vector<double> distance = vector<double>(size);
      for (auto a: distance) {
          a = INT_MAX;
      }
-
-     return dist;
+     vector<bool> visted = vector<bool>(size);
+     for (auto a : visted){
+         a = false;
+     }
+    distance[start] = 0;
+    
+    return path;
  }
  vector<vector<int>> RoadNetwork::stronglyConnected(){
      //TODO: find the strongly connected components
