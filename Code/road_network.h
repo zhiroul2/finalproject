@@ -43,9 +43,9 @@ class RoadNetwork {
         void addEdge(int start, int end, double distance);
         /*
         shortestPath find the distances between the start node and the end node.
-        Returns the length of the graph
+        Returns the path consist of node id as vector<int>
         */
-        double shortestPath(int start, int end);
+        vector<int> shortestPath(int start, int end);
         /*
 
         */
@@ -54,6 +54,7 @@ class RoadNetwork {
         //nodes
         vector<Node*> Nodelist_;
         int edge;
+        void helper(vector<bool>& visited, int i, vector<int>& c);
        
 
 };

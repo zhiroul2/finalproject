@@ -26,16 +26,17 @@ int RoadNetwork::EdgeNumber(){
 int RoadNetwork::NodeNumber(){
     return Nodelist_.size();
 }
-double RoadNetwork::shortestPath(int start, int end){
+vector<int> RoadNetwork::shortestPath(int start, int end){
+    vector<int> path;
     if (start == end){
-         return 0;
+         return path;
      }
      int size = Nodelist_.size(); //size of the graph
      if (!(0 <= start < size) or !(0 <= end < size)){
-         //path.push_back(-1000); // No node exist, warning signal
-         return -1000;
+         path.push_back(-1000); // No node exist, warning signal
      }
      vector<double> distance = vector<double>(size);
+     vector<int> prev = vector<int>(size);
      for (int i = 0; i < size; i++){
          distance[i] = 1000000007;
      }
@@ -52,14 +53,45 @@ double RoadNetwork::shortestPath(int start, int end){
             if(distance[v] > distance[u] + it.distance) {
                 distance[v] = distance[u] + it.distance;
                  pq.push(make_pair(v, distance[v]));
+                 prev[v] = u;
             }
         }
     }
-    return distance[end];
+    int i = end;
+    while(prev[i] != start){
+        cout<<prev[i]<<endl;
+        path.push_back(prev[i]);
+        i = prev[i];
+    }
+    return path;
  }
+void RoadNetwork::helper(vector<bool>& visited, int i , vector<int>& c){
+    c.push_back(i);
+    visited[i] = true;
+    for (auto  a: Nodelist_[i]->adjLists){
+        if (!visited[a.end]){
+            if (a.end < Nodelist_.size()){
+                helper(visited, a.end, c);
+            }
+        }
+    }
+
+}
  vector<vector<int>> RoadNetwork::stronglyConnected(){
-     //TODO: find the strongly connected components
      vector<vector<int>> vect;
+     int size = Nodelist_.size();
+     vector<bool> visited = vector<bool>(size);
+     for (int i = 0; i < size; i++){
+      visited[i] = false;
+     }
+     for (int i = 0; i < size; i++){
+         if (!visited[i]){
+             vector<int> c;
+             helper(visited, i, c);
+             vect.push_back(c);
+             visited[i] = true;
+         }
+     }
      return vect;
  }
 void RoadNetwork::viewGraph(){
