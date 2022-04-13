@@ -57,6 +57,9 @@ vector<int> RoadNetwork::shortestPath(int start, int end){
             }
         }
     }
+    if (distance[end] == 0 or distance[end] == 1000000007){
+        return path; // when there's no path bettween the two nodes
+    }
     int i = end;
     while(prev[i] != start){
         cout<<prev[i]<<endl;
@@ -70,7 +73,7 @@ void RoadNetwork::helper(vector<bool>& visited, int i , vector<int>& c){
     visited[i] = true;
     for (auto  a: Nodelist_[i]->adjLists){
         if (!visited[a.end]){
-            if (a.end < Nodelist_.size()){
+            if (a.end < int(Nodelist_.size())){
                 helper(visited, a.end, c);
             }
         }
