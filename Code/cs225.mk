@@ -15,7 +15,7 @@ LD = clang++
 OBJS_DIR = .objs
 
 # Add standard CS 225 object files
-OBJS += data_correction.o
+OBJS += 
 
 # -MMD and -MP asks clang++ to generate a .d file listing the headers used in the source code for use in the Make process.
 #   -MMD: "Write a depfile containing user headers"
@@ -48,12 +48,7 @@ $(OBJS_DIR):
 	@mkdir -p $(OBJS_DIR)/cs225/catch
 	@mkdir -p $(OBJS_DIR)/cs225/lodepng
 	@mkdir -p $(OBJS_DIR)/tests
-# mp_traversal specific
-	@mkdir -p $(OBJS_DIR)/imageTraversal
-	@mkdir -p $(OBJS_DIR)/colorPicker
-# mp_mosaic specific
-	@mkdir -p $(OBJS_DIR)/cs225/ColorSpace
-	@mkdir -p $(OBJS_DIR)/util
+
 
 # Rules for compiling source code.
 # - Every object file is required by $(EXE)
@@ -67,7 +62,7 @@ $(OBJS_DIR)/%.o: %.cpp | $(OBJS_DIR)
 # - Build the test program w/ catchmain.cpp from cs225
 OBJS_TEST += $(filter-out $(EXE_OBJ), $(OBJS))
 CPP_TEST = $(wildcard tests/*.cpp)
-CPP_TEST += cs225/catch/catchmain.cpp
+CPP_TEST += ../tests/catch/catchmain.cpp
 OBJS_TEST += $(CPP_TEST:.cpp=.o)
 
 $(TEST): output_msg $(patsubst %.o, $(OBJS_DIR)/%.o, $(OBJS_TEST))

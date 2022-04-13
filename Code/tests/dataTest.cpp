@@ -1,5 +1,5 @@
-#include "data_correction.h"
-#include <catch.hpp>
+#include "../data_correction.h"
+#include "./catch/catch.hpp"
 
 TEST_CASE("files successfully loaded, check for all positive data", "[nodeData()]") {
     map<int, Coordinate> test = nodeData("Code/Data/DataCorrection.txt");
@@ -41,14 +41,14 @@ TEST_CASE("data processed should end up with no duplicates", "[nodeData()]") {
     }
 }
 
-TEST_CASE("files successfully loaded, check for all positive data", "[edgeData()]") {
+TEST_CASE("files successfully loaded, check for all positive data for edge", "[edgeData()]") {
     map<int, EdgeData> test = edgeData("Code/Data/DataCorrection.txt");
     REQUIRE(test.size() == 4);
     
     SECTION("start nodes, end nodes, and distances are all positive") {
         bool tf = true;
         for (unsigned i = 0; i < test.size(); i++){
-            if (test[i].start < 0 || test[i].end < 0 || test[i].distance < 0) {
+            if (test[i].startNode < 0 || test[i].endNode < 0 || test[i].distance >= 0) {
                 tf = false;
                 break;
             }
