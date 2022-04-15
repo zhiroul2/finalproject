@@ -1,12 +1,21 @@
 #include "road_network.h"
 #include<iostream>
 #include <queue>
-
+#include <fstream>
+#include <sstream>
+#include "cs225/PNG.h"
 using namespace std;
+//using namespace cs225;
 typedef pair<int,int> myPair;
 void RoadNetwork::addNode(int id, double x, double y){
     if (Nodelist_.empty()) {
          Nodelist_ = vector<Node*>(2*id + 1);
+    }
+    if (x > x_){
+        x_ = x;
+    }
+    if (y > y_){
+        y_ = y;
     }
     Node* a = new Node(id, x, y);
     Nodelist_.insert(Nodelist_.begin() + id, a);
@@ -98,11 +107,14 @@ void RoadNetwork::helper(vector<bool>& visited, int i , vector<int>& c){
      return vect;
  }
 void RoadNetwork::viewGraph(){
-      for (auto a: Nodelist_){
-          cout<<a->NodeID_<<"-->"<<endl;
-          for (auto b: a->adjLists){
-               cout<<b.end<<endl;
-          }
-      }
+    unsigned height = int(y_) + 1;
+    unsigned width = int(x_) + 1;
+    //cs225::PNG* canvas = new cs225::PNG(100,100);
+    cs225::PNG* canvas = new cs225::PNG(width, height); //Our current dataset is too big, just for show
+    for (auto a : Nodelist_){
+        canvas->getPixel(unsigned (a->x_), unsigned (a->y_)).l = 0;
+    }
+    //TODO: blacken the path:Most direct route
+    canvas->writeToFile("graphImage"+ string(".png"));
 }
 

@@ -17,8 +17,9 @@ int main() {
         graph.addEdge(b.second.startNode, b.second.endNode, b.second.distance);
     }
     RoadNetwork test = RoadNetwork();
-    cout<<graph.EdgeNumber()<<endl; 
-    graph.shortestPath(0, 100);
+    //cout<<graph.EdgeNumber()<<endl; 
+    //graph.shortestPath(0, 100);
+    //graph.viewGraph();
     //cout<<graph.stronglyConnected().size()<<endl;// make sure that it's inserted
     return 1;
 }

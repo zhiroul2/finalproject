@@ -3,11 +3,12 @@
 #include <map>
 #include <vector>
 #include<string>
+#include "cs225/PNG.h"
 using namespace std;
 
 class RoadNetwork {
     public:
-        RoadNetwork(){ Nodelist_ = vector<Node*>();}
+        RoadNetwork(){ Nodelist_ = vector<Node*>(); x_= 0; y_ = 0;}
         class Edge{
             public:
             Edge(int start_, int end_, double distance_){
@@ -53,7 +54,8 @@ class RoadNetwork {
     private:
         //nodes
         vector<Node*> Nodelist_;
-        int edge;
+        int edge; //number of edges
+        double x_;double y_;
         void helper(vector<bool>& visited, int i, vector<int>& c);
        
 
