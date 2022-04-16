@@ -20,6 +20,7 @@ int main() {
     //cout<<graph.EdgeNumber()<<endl; 
     //graph.shortestPath(0, 100);
     cout<<graph.stronglyConnected().size()<<endl;
+    graph.viewGraph();
     //cout<<graph.stronglyConnected().size()<<endl;// make sure that it's inserted
     return 1;
 }

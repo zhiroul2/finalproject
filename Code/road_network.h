@@ -57,6 +57,4 @@ class RoadNetwork {
         int edge; //number of edges
         double x_;double y_;
         void helper(vector<bool>& visited, int i, vector<int>& c);
-       
-
 };
