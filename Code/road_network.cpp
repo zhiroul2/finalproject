@@ -11,16 +11,16 @@ void RoadNetwork::addNode(int id, double x, double y){
     if (Nodelist_.empty()) {
          Nodelist_ = vector<Node*>(2*id + 1);
     }
-    if (x > x_){
-        x_ = x;
+    if (x/10 > x_){
+        x_ = x/10;
     }
-    if (y > y_){
-        y_ = y;
+    if (y/10 > y_){
+        y_ = y/10;
     }
-    Node* a = new Node(id, x, y);
+    Node* a = new Node(id, x /10, y/10);
     Nodelist_.insert(Nodelist_.begin() + id, a);
 }
-void RoadNetwork::addEdge(int start, int end, double distance){
+void RoadNetwork::addEdge(int start, int end, double distance) {
     if (0 < start < int(Nodelist_.size()) and 0 < end < int(Nodelist_.size())){
         if (Nodelist_[start] != NULL and Nodelist_[end] != NULL){
              Nodelist_[start]->adjLists.push_back(Edge(start, end, distance));
@@ -35,7 +35,7 @@ int RoadNetwork::EdgeNumber(){
 int RoadNetwork::NodeNumber(){
     return Nodelist_.size();
 }
-vector<int> RoadNetwork::shortestPath(int start, int end){
+vector<int> RoadNetwork::shortestPath(int start, int end) {
     vector<int> path;
     if (start == end){
          return path;
@@ -109,10 +109,12 @@ void RoadNetwork::helper(vector<bool>& visited, int i , vector<int>& c){
 void RoadNetwork::viewGraph(){
     unsigned height = int(y_) + 1;
     unsigned width = int(x_) + 1;
-    //cs225::PNG* canvas = new cs225::PNG(100,100);
-    cs225::PNG* canvas = new cs225::PNG(width, height); //Our current dataset is too big, just for show
+    cs225::PNG* canvas = new cs225::PNG(width, height); 
+    //canvas->getPixel(2, 2).l = 0;//Our current dataset is too big, just for show
     for (auto a : Nodelist_){
-        canvas->getPixel(unsigned (a->x_), unsigned (a->y_)).l = 0;
+        if (a != NULL){
+            canvas->getPixel(unsigned (a->x_), unsigned (a->y_)).l = 0;
+        }
     }
     //TODO: blacken the path:Most direct route
     canvas->writeToFile("graphImage"+ string(".png"));
