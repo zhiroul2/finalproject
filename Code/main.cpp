@@ -19,7 +19,7 @@ int main() {
     RoadNetwork test = RoadNetwork();
     //cout<<graph.EdgeNumber()<<endl; 
     //graph.shortestPath(0, 100);
-    //graph.viewGraph();
+    cout<<graph.stronglyConnected().size()<<endl;
     //cout<<graph.stronglyConnected().size()<<endl;// make sure that it's inserted
     return 1;
 }

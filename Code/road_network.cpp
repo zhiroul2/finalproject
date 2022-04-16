@@ -21,8 +21,8 @@ void RoadNetwork::addNode(int id, double x, double y){
     Nodelist_.insert(Nodelist_.begin() + id, a);
 }
 void RoadNetwork::addEdge(int start, int end, double distance){
-    if (0 < start < int(Nodelist_.size())){
-        if (Nodelist_[start]){
+    if (0 < start < int(Nodelist_.size()) and 0 < end < int(Nodelist_.size())){
+        if (Nodelist_[start] != NULL and Nodelist_[end] != NULL){
              Nodelist_[start]->adjLists.push_back(Edge(start, end, distance));
              Nodelist_[start]->adj++;
              edge++;
@@ -97,7 +97,7 @@ void RoadNetwork::helper(vector<bool>& visited, int i , vector<int>& c){
       visited[i] = false;
      }
      for (int i = 0; i < size; i++){
-         if (!visited[i]){
+         if (!visited[i] and Nodelist_[i] != NULL){
              vector<int> c;
              helper(visited, i, c);
              vect.push_back(c);
