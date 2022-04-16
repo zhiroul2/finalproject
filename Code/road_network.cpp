@@ -113,7 +113,9 @@ void RoadNetwork::viewGraph(){
     //canvas->getPixel(2, 2).l = 0;//Our current dataset is too big, just for show
     for (auto a : Nodelist_){
         if (a != NULL){
-            canvas->getPixel(unsigned (a->x_), unsigned (a->y_)).l = 0;
+            canvas->getPixel(unsigned (a->x_), unsigned (a->y_)).l = 0.2;
+            canvas->getPixel(unsigned (a->x_), unsigned (a->y_)).s = 0.2;
+            canvas->getPixel(unsigned (a->x_), unsigned (a->y_)).h = 180;
         }
     }
     //TODO: blacken the path:Most direct route
