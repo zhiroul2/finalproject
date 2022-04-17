@@ -2,7 +2,8 @@ zhiroul2:
 Fix the makefile for main to be executed.
 succesfully write the addNode/addedge function and insert all the data into the graph.
 Complete the shortestPath and Strongly connected component
-Discover problem with edge data correction
+Discover problem with edge data correction and solve it within the scope of the class template
+Lead a zoom meeting to discuss future work with team members.
 
 jh80:
 
@@ -18,3 +19,5 @@ mukyehc2:
 
 Summary:
 
+Overall in a good standing.We would be able to present our work in mid-term check in.Faster than what we previosuly assumed and the major part of the class is done.
+If we get lucky, we would have more time during the final period.
