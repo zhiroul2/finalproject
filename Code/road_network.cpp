@@ -26,7 +26,7 @@ void RoadNetwork::clear() {
 
 void RoadNetwork::addNode(int id, double x, double y){
     //if the id is out of bounds, resize vector
-    if (id >= Nodelist_.size()) {
+    if (id > (int) Nodelist_.size()) {
         Nodelist_.resize(2*id + 1);
     }
     //Due to the reality of the node coordinate, to better draw the nodes out, we resize the coordinate to 10 times smaller
@@ -39,9 +39,9 @@ void RoadNetwork::addNode(int id, double x, double y){
         y_ = y/10;
     }
     //Create the node that will be added to the nodelist
-    Node* a = new Node(id, x/10, y/10);
+    Node* node = new Node(id, x/10, y/10);
     //Adding the node to the nodelist
-    Nodelist_.insert(Nodelist_.begin() + id, a);
+    Nodelist_.insert(Nodelist_.begin() + id, node);
 }
 
 void RoadNetwork::addEdge(int start, int end, double distance) {
@@ -60,42 +60,51 @@ void RoadNetwork::addEdge(int start, int end, double distance) {
     }
 }
 
-int RoadNetwork::EdgeNumber(){
+int RoadNetwork::EdgeNumber() {
     return edge;
 }
 
-int RoadNetwork::NodeNumber(){
+int RoadNetwork::NodeNumber() {
     return Nodelist_.size();
 }
 
 vector<int> RoadNetwork::shortestPath(int start, int end) {
     vector<int> path;
+    //If the two nodes are the same
     if (start == end){
-         return path;
-     }
-     int size = Nodelist_.size(); //size of the graph
-     if (!(0 <= start < size) or !(0 <= end < size)){
-         path.push_back(-1000); // No node exist, warning signal
-     }
-     vector<double> distance = vector<double>(size);
-     vector<int> prev = vector<int>(size);
-     for (int i = 0; i < size; i++){
-         distance[i] = 1000000007;
-     }
-    priority_queue<pair<int, int>, vector< pair<int, int> >, greater<pair<int, int> > > pq;
+        return path;
+    }
+    //size of the graph
+    int size = Nodelist_.size();
+    //Check if the node exist
+    if (!(0 <= start < size) or !(0 <= end < size)){
+        //No node exist, warning signal
+        path.push_back(-1000);
+    }
+    //Allocate space for potential edges
+    vector<double> distance = vector<double>(size);
+    //Allocate space for previous node
+    vector<int> prev = vector<int>(size);
+    //Setting the default distance to 1000000007
+    for (int i = 0; i < size; i++){
+        distance[i] = 1000000007;
+    }
+    //Creating a priority queue to find the shorest path, a vector to store pairs of nodes, greater for comparisons
+    //BFS
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
     pq.push(make_pair(start, 0));
     distance[start] = 0;
     while(!pq.empty()) {
-        int u = pq.top().first;
+        int fir_node = pq.top().first;
         pq.pop();
-        vector<Edge> n = Nodelist_[u]->adjLists;
-        for(auto it: n){
-            int v = it.end;
+        vector<Edge> adj_edges = Nodelist_[fir_node]->adjLists;
+        for(auto it: adj_edges){
+            int sec_node = it.end;
             int weight = it.distance;
-            if(distance[v] > distance[u] + it.distance) {
-                distance[v] = distance[u] + it.distance;
-                 pq.push(make_pair(v, distance[v]));
-                 prev[v] = u;
+            if(distance[sec_node] > distance[fir_node] + it.distance) {
+                distance[sec_node] = distance[fir_node] + it.distance;
+                pq.push(make_pair(sec_node, distance[sec_node]));
+                prev[sec_node] = fir_node;
             }
         }
     }
@@ -111,34 +120,34 @@ vector<int> RoadNetwork::shortestPath(int start, int end) {
     return path;
  }
 
-void RoadNetwork::helper(vector<bool>& visited, int i , vector<int>& c){
-    c.push_back(i);
+void RoadNetwork::helper(vector<bool>& visited, int i , vector<int>& vect){
+    vect.push_back(i);
     visited[i] = true;
-    for (auto  a: Nodelist_[i]->adjLists){
-        if (!visited[a.end]){
-            if (a.end < int(Nodelist_.size())){
-                helper(visited, a.end, c);
+    for (auto it : Nodelist_[i]->adjLists){
+        if (!visited[it.end]){
+            if (it.end < int(Nodelist_.size())){
+                helper(visited, it.end, vect);
             }
         }
     }
 }
 
-vector<vector<int>> RoadNetwork::stronglyConnected(){
-     vector<vector<int>> vect;
-     int size = Nodelist_.size();
-     vector<bool> visited = vector<bool>(size);
-     for (int i = 0; i < size; i++){
-      visited[i] = false;
-     }
-     for (int i = 0; i < size; i++){
-         if (!visited[i] and Nodelist_[i] != NULL){
-             vector<int> c;
-             helper(visited, i, c);
-             vect.push_back(c);
-             visited[i] = true;
-         }
-     }
-     return vect;
+vector<vector<int>> RoadNetwork::stronglyConnected() {
+    vector<vector<int>> vect;
+    int size = Nodelist_.size();
+    vector<bool> visited = vector<bool>(size);
+    for (int i = 0; i < size; i++){
+        visited[i] = false;
+    }
+    for (int i = 0; i < size; i++){
+        if (!visited[i] && Nodelist_[i] != NULL) {
+            vector<int> temp;
+            helper(visited, i, temp);
+            vect.push_back(temp);
+            visited[i] = true;
+        }
+    }
+    return vect;
 }
 
 void RoadNetwork::viewGraph(){
