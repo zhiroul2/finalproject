@@ -25,9 +25,9 @@ void RoadNetwork::clear() {
 }
 
 void RoadNetwork::addNode(int id, double x, double y){
-    //if the vector is empty, create a empty vector allocating space for the vector
-    if (Nodelist_.empty()) {
-        Nodelist_ = vector<Node*>(2*id + 1);
+    //if the id is out of bounds, resize vector
+    if (id >= Nodelist_.size()) {
+        Nodelist_.resize(2*id + 1);
     }
     //Due to the reality of the node coordinate, to better draw the nodes out, we resize the coordinate to 10 times smaller
     //Updating the largest x_ coordinate found in the data
