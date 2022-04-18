@@ -8,10 +8,10 @@ using namespace std;
 
 class RoadNetwork {
     public:
-        RoadNetwork(){ Nodelist_ = vector<Node*>(); x_= 0; y_ = 0;}
-        class Edge{
+        RoadNetwork() { Nodelist_ = vector<Node*>(); x_= 0; y_ = 0;}
+        class Edge {
             public:
-            Edge(int start_, int end_, double distance_){
+            Edge(int start_, int end_, double distance_) {
                 start = start_;
                 end = end_;
                 distance = distance_;
@@ -20,9 +20,9 @@ class RoadNetwork {
             int end;
             double distance;
         };
-        class Node{
+        class Node {
             public:
-            Node(int id, double x, double y){
+            Node(int id, double x, double y) {
                 NodeID_ = id;
                 x_ = x;
                 y_ = y;
@@ -51,10 +51,12 @@ class RoadNetwork {
 
         */
         vector<vector<int>> stronglyConnected();
+
     private:
         //nodes
         vector<Node*> Nodelist_;
         int edge; //number of edges
-        double x_;double y_;
+        //x_ and y_ stores the largest coordinate
+        double x_; double y_;
         void helper(vector<bool>& visited, int i, vector<int>& c);
 };
