@@ -11,6 +11,19 @@ using namespace std;
 
 typedef pair<int,int> myPair;
 
+RoadNetwork::~RoadNetwork() {
+    clear();
+}
+
+void RoadNetwork::clear() {
+    for (size_t i = 0; i < Nodelist_.size(); i++) {
+        if (Nodelist_[i] != NULL) {
+            delete Nodelist_[i];
+            Nodelist_[i] = NULL;
+        }
+    }
+}
+
 void RoadNetwork::addNode(int id, double x, double y){
     //if the vector is empty, create a empty vector allocating space for the vector
     if (Nodelist_.empty()) {

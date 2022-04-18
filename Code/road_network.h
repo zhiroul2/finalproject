@@ -2,13 +2,15 @@
 
 #include <map>
 #include <vector>
-#include<string>
+#include <string>
 #include "cs225/PNG.h"
 using namespace std;
 
 class RoadNetwork {
     public:
         RoadNetwork() { Nodelist_ = vector<Node*>(); x_= 0; y_ = 0;}
+        ~RoadNetwork();
+        void clear();
         class Edge {
             public:
             Edge(int start_, int end_, double distance_) {
@@ -39,6 +41,16 @@ class RoadNetwork {
         void viewGraph();
         int EdgeNumber();
         int NodeNumber();
+        //Returns the private list Nodelist_ For testing purposes
+        vector<Node*> getNodeList() { return Nodelist_; }
+
+        //Returns the private variable x_ For testing purposes
+        double getX() { return x_; }
+
+        //Returns the private variable y_ For testing purposes
+        double getY() { return y_; }
+
+
         /* add edge to the adjacency list
         */
         void addEdge(int start, int end, double distance);
