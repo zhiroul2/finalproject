@@ -17,3 +17,11 @@
 
 - Better description of work done, succinct but gets the point across.
 - Great acknowledgment of where you're standing with respect to your schedule, you could add an updated plan in a future dev log to really concretely set new goals for your overhanging tasks.
+
+# For 4/17: 
+
+## Grade: 100% 
+
+## Comments: 
+
+- A nicely detailed dev log showing your progress. Keep it up guys!
