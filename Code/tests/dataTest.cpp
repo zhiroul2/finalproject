@@ -1,6 +1,7 @@
+#include "../cs225/catch/catch.hpp"
 #include "../data_correction.h"
-#include "./catch/catch.hpp"
 
+/*
 TEST_CASE("files successfully loaded, check for all positive data", "[nodeData()]") {
     map<int, Coordinate> test = nodeData("Code/Data/DataCorrection.txt");
     REQUIRE(test.size() == 4);
@@ -67,3 +68,4 @@ TEST_CASE("files successfully loaded, check for all positive data for edge", "[e
         REQUIRE(tf == true);
     }
 }
+*/
