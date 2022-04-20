@@ -111,12 +111,16 @@ vector<int> RoadNetwork::shortestPath(int start, int end) {
     if (distance[end] == 0 or distance[end] == 1000000007){
         return path; // when there's no path bettween the two nodes
     }
+<<<<<<< HEAD
     int i = end;
     while(prev[i] != start) {
         path.push_back(prev[i]);
         i = prev[i];
     }
     return path;
+=======
+    return prev;
+>>>>>>> 7791dd16c85067b1a65ccc53d93f5b318fb11735
  }
 
 void RoadNetwork::helper(vector<bool>& visited, int i , vector<int>& vect){
