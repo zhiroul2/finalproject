@@ -112,8 +112,7 @@ vector<int> RoadNetwork::shortestPath(int start, int end) {
         return path; // when there's no path bettween the two nodes
     }
     int i = end;
-    while(prev[i] != start){
-        cout<<prev[i]<<endl;
+    while(prev[i] != start) {
         path.push_back(prev[i]);
         i = prev[i];
     }
@@ -155,11 +154,11 @@ void RoadNetwork::viewGraph(){
     unsigned width = int(x_) + 1;
     cs225::PNG* canvas = new cs225::PNG(width, height); 
     //canvas->getPixel(2, 2).l = 0;//Our current dataset is too big, just for show
-    for (auto a : Nodelist_){
-        if (a != NULL){
-            canvas->getPixel(unsigned (a->x_), unsigned (a->y_)).l = 0.2;
-            canvas->getPixel(unsigned (a->x_), unsigned (a->y_)).s = 0.2;
-            canvas->getPixel(unsigned (a->x_), unsigned (a->y_)).h = 180;
+    for (auto cur_node : Nodelist_){
+        if (cur_node != NULL){
+            canvas->getPixel(unsigned (cur_node->x_), unsigned (cur_node->y_)).l = 0.2;
+            canvas->getPixel(unsigned (cur_node->x_), unsigned (cur_node->y_)).s = 0.2;
+            canvas->getPixel(unsigned (cur_node->x_), unsigned (cur_node->y_)).h = 180;
         }
     }
     //TODO: blacken the path:Most direct route
