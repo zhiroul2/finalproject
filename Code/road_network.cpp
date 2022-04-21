@@ -113,12 +113,16 @@ vector<int> RoadNetwork::shortestPath(int start, int end) {
     }
     int e = end;
     path.push_back(start);
+    vector <int> temp;
     while (prev[end] != start){
-        path.push_back(prev[end]);
+        temp.push_back(prev[end]);
         end = prev[end];
     }
+    reverse(temp.begin(), temp.end());
+    for (unsigned i = 0; i < temp.size(); i++){
+        path.push_back(temp[i]);
+    }
     path.push_back(e);
-
     return path;
 
  }
