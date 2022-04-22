@@ -3,6 +3,7 @@
 #include <queue>
 #include <fstream>
 #include <sstream>
+#include <vector>
 #include "cs225/PNG.h"
 
 using namespace std;
