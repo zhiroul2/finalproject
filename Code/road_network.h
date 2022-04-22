@@ -123,7 +123,9 @@ class RoadNetwork {
         //number of edges
         int edge;
         //x_ and y_ stores the largest coordinate
-        double x_; double y_;
+        double x_; 
+        double y_;
+    
         //helper function to track the visited nodes, used in traversal
         void helper(vector<bool>& visited, int i, vector<int>& vect);
 };
