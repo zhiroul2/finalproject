@@ -2,6 +2,7 @@
 #include<iostream>
 #include <queue>
 #include <fstream>
+#include <algorithm>
 #include <sstream>
 #include <vector>
 #include "cs225/PNG.h"

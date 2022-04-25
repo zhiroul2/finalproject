@@ -24,20 +24,32 @@ TEST_CASE("Nodes successfully added to the RoadNetwork class", "[addNode()]") {
         expected.clear();
     }
 
-
     SECTION("node is successfully inserted at the correct index based on its nodeID, inserting in random order") {
         network.addNode(0, 10, 10);
         network.addNode(2, 30, 30);
         network.addNode(1, 20, 20);
+        RoadNetwork::Node * node = new RoadNetwork::Node(0, 1, 1);
+        expected.push_back(node);
+        RoadNetwork::Node * node2 = new RoadNetwork::Node(1, 2, 2);
+        expected.push_back(node2);
+        RoadNetwork::Node * node1 = new RoadNetwork::Node(2, 3, 3);
+        expected.push_back(node1);
+        //The value after resizing
+        REQUIRE(network.getNodeList().size() == 7);
+        REQUIRE(expected.at(0)->NodeID_ == network.getNodeList().at(0)->NodeID_);
+        REQUIRE(expected.at(1)->NodeID_ == network.getNodeList().at(1)->NodeID_);
     }
 }
 
+TEST_CASE("Edge successfully added to the RoadNetwork class", "[addEdge()]") {
 
-double calculate_dist(double ax, double ay, double bx, double by){
+}
+
+double calculate_dist(double ax, double ay, double bx, double by) {
     return sqrt((ax-bx)*(ax-bx) + (ay-by)*(ay-by));
 }
 
-TEST_CASE("correctly find the shortest path of two nodes SIMPLE"){
+TEST_CASE("correctly find the shortest path of two nodes SIMPLE", "[shortestPath()]") {
     RoadNetwork test_graph = RoadNetwork();
     test_graph.addNode(1, 2, 2);
     test_graph.addNode(2, 4, 4);
@@ -61,7 +73,7 @@ TEST_CASE("correctly find the shortest path of two nodes SIMPLE"){
     REQUIRE(test_path == actual_path);
 }
 
-TEST_CASE("correctly find the shortest path when disconnected"){
+TEST_CASE("correctly find the shortest path when disconnected", "[shortestPath()]") {
      RoadNetwork test_graph = RoadNetwork();
     test_graph.addNode(1, 2, 2);
     test_graph.addNode(2, 4, 4);
@@ -69,7 +81,8 @@ TEST_CASE("correctly find the shortest path when disconnected"){
     vector <int> test_path = test_graph.shortestPath(1, 3);
     REQUIRE(test_path.size() == 0);
 }
-TEST_CASE("correctly find the shortest path when multiple edges involved"){
+
+TEST_CASE("correctly find the shortest path when multiple edges involved", "[shortestPath()]") {
      RoadNetwork test_graph = RoadNetwork();
     vector <int> actual_path = {1, 2, 5};
     test_graph.addNode(1, 2, 2);
@@ -86,7 +99,7 @@ TEST_CASE("correctly find the shortest path when multiple edges involved"){
     REQUIRE(test_path == actual_path);
 }
 
-TEST_CASE("strongly connected components when disconnected"){
+TEST_CASE("strongly connected components when the nodes are disconnected", "[stronglyConnected()]") {
     RoadNetwork test_graph = RoadNetwork();
     test_graph.addNode(1, 2, 2);
     test_graph.addNode(2, 4, 4);
@@ -95,7 +108,7 @@ TEST_CASE("strongly connected components when disconnected"){
     REQUIRE(connected.size() == 3);
 }
 
-TEST_CASE("strongly connected components when 1 edge"){
+TEST_CASE("strongly connected components when there exist 1 edge", "[stronglyConnected()]") {
     RoadNetwork test_graph = RoadNetwork();
     test_graph.addNode(1, 2, 2);
     test_graph.addNode(2, 4, 4);
@@ -105,7 +118,7 @@ TEST_CASE("strongly connected components when 1 edge"){
     REQUIRE(connected.size() == 2);
 }
 
-TEST_CASE("strongly connected components when circle"){
+TEST_CASE("strongly connected components forming a circle", "[stronglyConnected()]") {
     RoadNetwork test_graph = RoadNetwork();
     test_graph.addNode(1, 2, 2);
     test_graph.addNode(2, 4, 4);
