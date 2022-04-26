@@ -15,3 +15,23 @@ In order to solve these two problems, one algorithm is to find the shortest rout
 We will use the dataset that contains the information of the x and y coordinates of every eixsted node in a city, the distance between two nodes, the nodeID, and the edgeID. We will be using these information to approach the leading questions raised above.
 
 We will also represent the data in the form of a graph. 
+
+We answer the question by creating a road_network class.
+We create road_network class and store the lists of nodes(Node is an inner class for road_network class to better extract information and provide interface needed) as a vector<Node*>, each node contains an adjacency list as vector<edges> where edge is also an inner class.
+
+in our node class, we store the int Nodeid, double x_, double y_, vector<edge> adj_list 
+
+Algorithm:
+
+Shortest path by Dijkstra’s Algorithm:
+
+
+Test Cases:
+
+
+Strongly Connected Components:
+
+
+Test Cases:
+
+
