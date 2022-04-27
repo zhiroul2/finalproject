@@ -163,6 +163,7 @@ void RoadNetwork::viewGraph(){
     unsigned height = int(y_) + 1;
     unsigned width = int(x_) + 1;
     cs225::PNG* canvas = new cs225::PNG(width, height); 
+    /**
     for (auto cur_node : Nodelist_){
         for (auto a : cur_node->adjLists){
             if (Nodelist_[a.start]->x_ < Nodelist_[a.end]->x_){
@@ -182,12 +183,19 @@ void RoadNetwork::viewGraph(){
             }
         }
     }
-    for (auto cur_node : Nodelist_){
-        if (cur_node != NULL){
-            canvas->getPixel(unsigned (cur_node->x_), unsigned (cur_node->y_)).l = 0.3;
-            canvas->getPixel(unsigned (cur_node->x_), unsigned (cur_node->y_)).s = 0.7;
-            canvas->getPixel(unsigned (cur_node->x_), unsigned (cur_node->y_)).h = 350;
+    **/
+
+    vector<vector<int>> vect = stronglyConnected();
+    int i = 10; double j = 0.1;
+    for (auto part: vect){
+        for (auto a: part){
+            Node* cur_node = Nodelist_[a];
+            canvas->getPixel(unsigned (cur_node->x_), unsigned (cur_node->y_)).l = 0.5;
+            canvas->getPixel(unsigned (cur_node->x_), unsigned (cur_node->y_)).s = j;
+            canvas->getPixel(unsigned (cur_node->x_), unsigned (cur_node->y_)).h = i;
         }
+        i += 30;
+        j += 0.5;
     }
     //TODO: blacken the path:Most direct route
     canvas->writeToFile("graphImage"+ string(".png"));
