@@ -163,12 +163,21 @@ void RoadNetwork::viewGraph(){
     unsigned height = int(y_) + 1;
     unsigned width = int(x_) + 1;
     cs225::PNG* canvas = new cs225::PNG(width, height); 
-    //canvas->getPixel(2, 2).l = 0;//Our current dataset is too big, just for show
+    for (auto cur_node : Nodelist_){
+        for (auto a : cur_node->adjLists){
+            if (Nodelist_[a.start]->x_ < Nodelist_[a.end]->x_){
+                int slope = (Nodelist_[a.end]->y_ - Nodelist_[a.start]->y_)/(Nodelist_[a.end]->x_ - Nodelist_[a.start]->x_);
+                for (int i = Nodelist_[a.start]->x_; i < Nodelist_[a.end]->x_; i++){
+                     canvas->getPixel(i, Nodelist_[a.start]->y_ + (slope * i)).l = 0;
+                }
+            }
+        }
+    }
     for (auto cur_node : Nodelist_){
         if (cur_node != NULL){
-            canvas->getPixel(unsigned (cur_node->x_), unsigned (cur_node->y_)).l = 0.2;
-            canvas->getPixel(unsigned (cur_node->x_), unsigned (cur_node->y_)).s = 0.2;
-            canvas->getPixel(unsigned (cur_node->x_), unsigned (cur_node->y_)).h = 180;
+            canvas->getPixel(unsigned (cur_node->x_), unsigned (cur_node->y_)).l = 0.3;
+            canvas->getPixel(unsigned (cur_node->x_), unsigned (cur_node->y_)).s = 0.7;
+            canvas->getPixel(unsigned (cur_node->x_), unsigned (cur_node->y_)).h = 350;
         }
     }
     //TODO: blacken the path:Most direct route
