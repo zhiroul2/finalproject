@@ -167,8 +167,17 @@ void RoadNetwork::viewGraph(){
         for (auto a : cur_node->adjLists){
             if (Nodelist_[a.start]->x_ < Nodelist_[a.end]->x_){
                 int slope = (Nodelist_[a.end]->y_ - Nodelist_[a.start]->y_)/(Nodelist_[a.end]->x_ - Nodelist_[a.start]->x_);
-                for (int i = Nodelist_[a.start]->x_; i < Nodelist_[a.end]->x_; i++){
-                     canvas->getPixel(i, Nodelist_[a.start]->y_ + (slope * i)).l = 0;
+                int count = 0;
+                for (int i = int(Nodelist_[a.start]->x_); i < Nodelist_[a.end]->x_; i++){
+                     canvas->getPixel(i, Nodelist_[a.start]->y_ + slope*(count)).l = 0;
+                     count++;
+                }
+            } else if (Nodelist_[a.start]->x_ > Nodelist_[a.end]->x_ ){
+                int slope = (Nodelist_[a.start]->y_ - Nodelist_[a.end]->y_)/(Nodelist_[a.start]->x_ - Nodelist_[a.end]->x_);
+                int count = 0;
+                for (int i = int(Nodelist_[a.end]->x_); i < Nodelist_[a.start]->x_; i++){
+                     canvas->getPixel(i, Nodelist_[a.end]->y_ + slope*(count)).l = 0;
+                     count++;
                 }
             }
         }
