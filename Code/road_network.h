@@ -70,7 +70,7 @@ class RoadNetwork {
         /*
         Draws out the nodes and the edges of the RoadNetwork to a PNG image
         */
-        void viewGraph();
+        void viewGraph(string filename);
 
         /*
         Returns the number of edges of a RoadNetwork object

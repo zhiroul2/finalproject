@@ -159,12 +159,14 @@ vector<vector<int>> RoadNetwork::stronglyConnected() {
     return vect;
 }
 
-void RoadNetwork::viewGraph(){
+void RoadNetwork::viewGraph(string filename){
     unsigned height = int(y_) + 1;
     unsigned width = int(x_) + 1;
     cs225::PNG* canvas = new cs225::PNG(width, height); 
-    
     for (auto cur_node : Nodelist_){
+        if (cur_node == NULL){
+            break;
+        }
         for (auto a : cur_node->adjLists){
             if (Nodelist_[a.start]->x_ ==  Nodelist_[a.end]->x_){
                 double high = max(Nodelist_[a.start]->y_, Nodelist_[a.end]->y_);
@@ -188,12 +190,6 @@ void RoadNetwork::viewGraph(){
                 } 
                 int count = 0;
                 for (int i = int(Nodelist_[a.end]->x_); i < Nodelist_[a.start]->x_; i++){
-                    if (i == 717 and slope == -225){
-                        cout<<"count is: "<<count<<endl;
-                        cout << "slope is "<<slope<<endl;
-                        cout<< "the y is "<< Nodelist_[a.start]->y_ <<endl;
-                        cout << Nodelist_[a.end]->y_ + slope*(count) << endl;
-                    }
                      canvas->getPixel(i, Nodelist_[a.end]->y_ + slope*(count)).l = 0;
                      count++;
                 }
@@ -212,7 +208,6 @@ void RoadNetwork::viewGraph(){
         i += 30;
         j += 0.5;
     }
-    //TODO: blacken the path:Most direct route
-    canvas->writeToFile("graphImage"+ string(".png"));
+    canvas->writeToFile(filename);
 }
 

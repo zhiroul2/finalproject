@@ -19,6 +19,7 @@ int main() {
     RoadNetwork test = RoadNetwork();
     test.addNode(0, 2, 2);
     test.addNode(1, 3, 3);
+    test.addNode(3, 5, 5);
     test.addNode(2, 2, 2);
     test.addEdge(0, 1, 2);
     test.addEdge(1, 2, 6);
@@ -27,7 +28,7 @@ int main() {
         cout<<a<<endl;
     }
     //cout<<graph.stronglyConnected().size()<<endl;
-    graph.viewGraph();
+    graph.viewGraph("ChangeName.png");
     //cout<<graph.stronglyConnected().size()<<endl;// make sure that it's inserted
     return 1;
 }
