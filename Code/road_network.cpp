@@ -163,9 +163,16 @@ void RoadNetwork::viewGraph(){
     unsigned height = int(y_) + 1;
     unsigned width = int(x_) + 1;
     cs225::PNG* canvas = new cs225::PNG(width, height); 
-    /**
+    
     for (auto cur_node : Nodelist_){
         for (auto a : cur_node->adjLists){
+            if (Nodelist_[a.start]->x_ ==  Nodelist_[a.end]->x_){
+                double high = max(Nodelist_[a.start]->y_, Nodelist_[a.end]->y_);
+                int low = min(Nodelist_[a.start]->y_, Nodelist_[a.end]->y_);
+                for (int i = low; i < high; i++){
+                     canvas->getPixel(Nodelist_[a.start]->x_, low).l = 0;
+                }
+            }
             if (Nodelist_[a.start]->x_ < Nodelist_[a.end]->x_){
                 int slope = (Nodelist_[a.end]->y_ - Nodelist_[a.start]->y_)/(Nodelist_[a.end]->x_ - Nodelist_[a.start]->x_);
                 int count = 0;
@@ -173,18 +180,26 @@ void RoadNetwork::viewGraph(){
                      canvas->getPixel(i, Nodelist_[a.start]->y_ + slope*(count)).l = 0;
                      count++;
                 }
-            } else if (Nodelist_[a.start]->x_ > Nodelist_[a.end]->x_ ){
-                int slope = (Nodelist_[a.start]->y_ - Nodelist_[a.end]->y_)/(Nodelist_[a.start]->x_ - Nodelist_[a.end]->x_);
+            } 
+            if (Nodelist_[a.start]->x_ > Nodelist_[a.end]->x_ ){
+                int slope = 0;
+                if ((Nodelist_[a.start]->y_ - Nodelist_[a.end]->y_) > 1){
+                   slope = (Nodelist_[a.start]->y_ - Nodelist_[a.end]->y_)/(Nodelist_[a.start]->x_ - Nodelist_[a.end]->x_);
+                } 
                 int count = 0;
                 for (int i = int(Nodelist_[a.end]->x_); i < Nodelist_[a.start]->x_; i++){
+                    if (i == 717 and slope == -225){
+                        cout<<"count is: "<<count<<endl;
+                        cout << "slope is "<<slope<<endl;
+                        cout<< "the y is "<< Nodelist_[a.start]->y_ <<endl;
+                        cout << Nodelist_[a.end]->y_ + slope*(count) << endl;
+                    }
                      canvas->getPixel(i, Nodelist_[a.end]->y_ + slope*(count)).l = 0;
                      count++;
                 }
             }
         }
     }
-    **/
-
     vector<vector<int>> vect = stronglyConnected();
     int i = 10; double j = 0.1;
     for (auto part: vect){
