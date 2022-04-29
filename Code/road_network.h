@@ -112,7 +112,9 @@ class RoadNetwork {
         vector<int> shortestPath(int start, int end);
 
         /*
-
+        Finding the nodes that are strongly connected
+        add the strongly connected nodes into a vector at the same index
+        Returns the strongly connected components as a 2D-vector with the nodeID as int
         */
         vector<vector<int>> stronglyConnected();
 
@@ -125,7 +127,7 @@ class RoadNetwork {
         //x_ and y_ stores the largest coordinate
         double x_; 
         double y_;
-    
-        //helper function to track the visited nodes, used in traversal
+
+        //helper function to find which nodes are connected, used for strongly connected component function
         void helper(vector<bool>& visited, int i, vector<int>& vect);
 };

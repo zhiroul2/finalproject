@@ -1,9 +1,17 @@
+/////////////////////////////////////////////////////////////////////////////////////////////
+//                             Framework Set-up //
+/////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "../cs225/catch/catch.hpp"
 #include "../road_network.h"
 #include <cmath>
 #include <iostream>
 #include <vector>
 using namespace std;
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+//                                Test Cases //
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 TEST_CASE("Nodes successfully added to the RoadNetwork class", "[addNode()]") {
     vector<RoadNetwork::Node*> expected;
@@ -41,15 +49,88 @@ TEST_CASE("Nodes successfully added to the RoadNetwork class", "[addNode()]") {
     }
 }
 
-TEST_CASE("Edge successfully added to the RoadNetwork class", "[addEdge()]") {
+TEST_CASE("Check if edges are successfully added to the RoadNetwork class", "[addEdge()]") {
 
+    SECTION("Invalid Edge not added, there cannot exist an edge between the node itself") {
+        RoadNetwork network;
+        network.addNode(1, 2, 3);
+        REQUIRE_THROWS(network.addEdge(1, 1, 3));
+    }
+
+    SECTION("Edge successfully added to the Node") {
+        RoadNetwork network;
+        network.addNode(1, 2, 2);
+        network.addNode(2, 4, 4);
+        network.addNode(3, 6, 6);
+        network.addNode(4, 8, 8);
+        network.addEdge(2, 3, 5);
+        RoadNetwork::Edge expected = RoadNetwork::Edge(2, 3, 5);
+        std::vector<RoadNetwork::Node*> data = network.getNodeList();
+        for (size_t i = 1; i < 4; i++) {
+            if (data[i]->NodeID_ == 2) {
+                REQUIRE(data[i]->adj == 1);
+                REQUIRE(data[i]->adjLists[0].distance == expected.distance);
+                REQUIRE(data[i]->adjLists[0].start == expected.start);
+                REQUIRE(data[i]->adjLists[0].end == expected.end);
+            }
+        }
+    }
+
+    SECTION("Two Edges successfully added to different Nodes") {
+        RoadNetwork network;
+        network.addNode(0, 0, 0);
+        network.addNode(1, 2, 2);
+        network.addNode(2, 4, 4);
+        network.addNode(3, 6, 6);
+        network.addNode(4, 8, 8);
+        network.addEdge(3, 4, 5);
+        network.addEdge(0, 2, 1);
+        RoadNetwork::Edge expected = RoadNetwork::Edge(3, 4, 5);
+        RoadNetwork::Edge expected1 = RoadNetwork::Edge(0, 2, 1);
+        std::vector<RoadNetwork::Node*> data = network.getNodeList();
+        for (size_t i = 0; i < 4; i++) {
+            if (data[i]->NodeID_ == 3) {
+                REQUIRE(data[i]->adj == 1);
+                REQUIRE(data[i]->adjLists[0].distance == expected.distance);
+                REQUIRE(data[i]->adjLists[0].start == expected.start);
+                REQUIRE(data[i]->adjLists[0].end == expected.end);
+            }
+            if (data[i]->NodeID_ == 0) {
+                REQUIRE(data[i]->adj == 1);
+                REQUIRE(data[i]->adjLists[0].distance == expected1.distance);
+                REQUIRE(data[i]->adjLists[0].start == expected1.start);
+                REQUIRE(data[i]->adjLists[0].end == expected1.end);
+            }
+        }
+    }
+
+    SECTION("Two Edges successfully added to the same node") {
+        RoadNetwork network;
+        network.addNode(0, 0, 0);
+        network.addNode(1, 2, 2);
+        network.addNode(2, 4, 4);
+        network.addNode(3, 6, 6);
+        network.addNode(4, 8, 8);
+        network.addEdge(0, 4, 5);
+        network.addEdge(0, 2, 1);
+        RoadNetwork::Edge expected = RoadNetwork::Edge(0, 4, 5);
+        RoadNetwork::Edge expected1 = RoadNetwork::Edge(0, 2, 1);
+        std::vector<RoadNetwork::Node*> data = network.getNodeList();
+        REQUIRE(data[0]->adj == 2);
+        REQUIRE(data[0]->adjLists[0].distance == expected.distance);
+        REQUIRE(data[0]->adjLists[0].start == expected.start);
+        REQUIRE(data[0]->adjLists[0].end == expected.end);
+        REQUIRE(data[0]->adjLists[1].distance == expected1.distance);
+        REQUIRE(data[0]->adjLists[1].start == expected1.start);
+        REQUIRE(data[0]->adjLists[1].end == expected1.end);
+    }
 }
 
 double calculate_dist(double ax, double ay, double bx, double by) {
     return sqrt((ax-bx)*(ax-bx) + (ay-by)*(ay-by));
 }
 
-TEST_CASE("correctly find the shortest path of two nodes SIMPLE", "[shortestPath()]") {
+TEST_CASE("Correctly find the shortest path of two nodes SIMPLE", "[shortestPath()]") {
     RoadNetwork test_graph = RoadNetwork();
     test_graph.addNode(1, 2, 2);
     test_graph.addNode(2, 4, 4);
@@ -73,7 +154,7 @@ TEST_CASE("correctly find the shortest path of two nodes SIMPLE", "[shortestPath
     REQUIRE(test_path == actual_path);
 }
 
-TEST_CASE("correctly find the shortest path when disconnected", "[shortestPath()]") {
+TEST_CASE("Correctly find the shortest path when disconnected", "[shortestPath()]") {
      RoadNetwork test_graph = RoadNetwork();
     test_graph.addNode(1, 2, 2);
     test_graph.addNode(2, 4, 4);
@@ -82,7 +163,7 @@ TEST_CASE("correctly find the shortest path when disconnected", "[shortestPath()
     REQUIRE(test_path.size() == 0);
 }
 
-TEST_CASE("correctly find the shortest path when multiple edges involved", "[shortestPath()]") {
+TEST_CASE("Correctly find the shortest path when multiple edges involved", "[shortestPath()]") {
      RoadNetwork test_graph = RoadNetwork();
     vector <int> actual_path = {1, 2, 5};
     test_graph.addNode(1, 2, 2);
@@ -99,7 +180,7 @@ TEST_CASE("correctly find the shortest path when multiple edges involved", "[sho
     REQUIRE(test_path == actual_path);
 }
 
-TEST_CASE("strongly connected components when the nodes are disconnected", "[stronglyConnected()]") {
+TEST_CASE("Strongly connected components when the nodes are disconnected", "[stronglyConnected()]") {
     RoadNetwork test_graph = RoadNetwork();
     test_graph.addNode(1, 2, 2);
     test_graph.addNode(2, 4, 4);
@@ -108,7 +189,7 @@ TEST_CASE("strongly connected components when the nodes are disconnected", "[str
     REQUIRE(connected.size() == 3);
 }
 
-TEST_CASE("strongly connected components when there exist 1 edge", "[stronglyConnected()]") {
+TEST_CASE("Strongly connected components when there exist 1 edge", "[stronglyConnected()]") {
     RoadNetwork test_graph = RoadNetwork();
     test_graph.addNode(1, 2, 2);
     test_graph.addNode(2, 4, 4);
@@ -118,7 +199,7 @@ TEST_CASE("strongly connected components when there exist 1 edge", "[stronglyCon
     REQUIRE(connected.size() == 2);
 }
 
-TEST_CASE("strongly connected components forming a circle", "[stronglyConnected()]") {
+TEST_CASE("Strongly connected components forming a circle aka one connected component", "[stronglyConnected()]") {
     RoadNetwork test_graph = RoadNetwork();
     test_graph.addNode(1, 2, 2);
     test_graph.addNode(2, 4, 4);
@@ -129,3 +210,126 @@ TEST_CASE("strongly connected components forming a circle", "[stronglyConnected(
     vector<vector<int>> connected = test_graph.stronglyConnected();
     REQUIRE(connected.size() == 1);
 }
+
+TEST_CASE("Strongly connected components correctly identifies the components", "[stronglyConnected()]") {
+    RoadNetwork network;
+    //Forming a circle
+    network.addNode(0, 0, 0);
+    network.addNode(1, 2, 0);
+    network.addNode(2, 2, 3);
+    network.addNode(3, 3, 2);
+    network.addNode(4, 3, 0);
+    //Adding the edges to form the circle
+    network.addEdge(0, 1, 2);
+    network.addEdge(1, 2, 2);
+    network.addEdge(2, 3, 2);
+    network.addEdge(3, 4, 2);
+    network.addEdge(4, 0, 4);
+    //Adding an edge to a circle
+    network.addNode(5, 6, 0);
+    network.addEdge(4, 5, 2);
+    //Successfully identifies that as 1 connected component
+    std::vector<std::vector<int>> components = network.stronglyConnected();
+    std::vector<int> expected = {0, 1, 2, 3, 4, 5};
+    REQUIRE(components.size() == 1);
+    REQUIRE(components[0].size() == 6);
+    for (size_t i = 0; i < components[0].size(); i++) {
+        REQUIRE(expected[i] == components[0][i]);
+    }
+}
+
+TEST_CASE("Strongly connected components identifies two or more connected components", "[stronglyConnected()]") {
+    RoadNetwork network;
+    //one connected component of size 2
+    network.addNode(0, 1, 0); network.addNode(1, 1, 1);
+    network.addEdge(0, 1, 1);
+    //Second connected component of size 3
+    network.addNode(2, 2, 0); network.addNode(3, 2, 1); network.addNode(4, 2, 3);
+    network.addEdge(2, 3, 1);
+    network.addEdge(3, 4, 2);
+    //Third connected component of size 6
+    network.addNode(5, 3, 0); network.addNode(6, 3, 1); network.addNode(7, 3, 2); 
+    network.addNode(8, 5, 2); network.addNode(9, 7, 0); network.addNode(10, 4, 0); 
+    network.addEdge(5, 6, 1);
+    network.addEdge(6, 7, 1);
+    network.addEdge(7, 8, 3);
+    network.addEdge(8, 9, 3);
+    network.addEdge(9, 10, 3);
+    network.addEdge(10, 5, 1);
+    //Checking if the function successfully performs identifying these components
+    std::vector<std::vector<int>> components = network.stronglyConnected();
+    std::vector<int> one = {0, 1};
+    std::vector<int> two = {2, 3, 4};
+    std::vector<int> three = {5, 6, 7, 8, 9, 10};
+    REQUIRE(components.size() == 3);
+    REQUIRE(components[0].size() == one.size());
+    REQUIRE(components[1].size() == two.size());
+    REQUIRE(components[2].size() == three.size());
+    for (size_t i = 0; i < components.size(); i++) {
+        for (size_t j = 0; j < components[i].size(); j++) {
+            if (i == 0) {
+                REQUIRE(components[i][j] == one[j]);
+            } else if (i == 1) {
+                REQUIRE(components[i][j] == two[j]);
+            } else if (i == 2) {
+                REQUIRE(components[i][j] == three[j]);
+            }
+        }
+    }
+}
+
+TEST_CASE("strongly connected components correclty identifies a strongly connected when several edges connects", "[stronglyConnected()]") {
+    RoadNetwork network;
+    //Creating a cylic graph
+    network.addNode(0, 0, 2); network.addNode(1, 2, 3); network.addNode(2, 3, 2); 
+    network.addNode(3, 2, 0); network.addNode(4, 4, 3); network.addNode(5, 5, 2); network.addNode(6, 4, 0);
+    network.addEdge(0, 1, 1);
+    network.addEdge(1, 2, 1);
+    network.addEdge(2, 3, 1);
+    network.addEdge(3, 0, 1);
+    network.addEdge(4, 1, 1);
+    network.addEdge(5, 2, 1);
+    network.addEdge(6, 3, 1);
+    network.addEdge(4, 5, 1);
+    network.addEdge(5, 6, 1);
+    //Checking if the function identifies this as connected components
+    std::vector<std::vector<int>> components = network.stronglyConnected();
+    REQUIRE(components.size() == 2);
+    std::vector<int> one = {0, 1, 2, 3};
+    std::vector<int> two = {4, 5, 6};
+    REQUIRE(components[0].size() == one.size());
+    REQUIRE(components[1].size() == two.size());
+    for (size_t i = 0; i < components.size(); i++) {
+        for (size_t j = 0; j < components[i].size(); j++) {
+            if (i == 0) {
+                REQUIRE(components[i][j] == one[j]);
+            } else if (i == 1) {
+                REQUIRE(components[i][j] == two[j]);
+            }
+        }
+    }
+}
+
+TEST_CASE("strongly connected components correclty identifies the connected components with one edge indirectly connected", "[stronglyConnected()]") {
+    RoadNetwork network;
+    //Creating a cycle with four connected nodes
+    network.addNode(0, 0, 3); network.addNode(1, 1, 4); network.addNode(2, 2, 3); network.addNode(3, 1, 0);
+    network.addEdge(0, 1, 1);
+    network.addEdge(1, 2, 1);
+    network.addEdge(2, 3, 1);
+    network.addEdge(3, 4, 1);
+    //Adding the node that is connected with one of the node within the cycle
+    network.addNode(4, 3, 4);
+    network.addEdge(4, 2, 2);
+    //Adding the node that is connected to the last node
+    network.addNode(5, 4, 5);
+    network.addEdge(5, 4, 2);
+    //Checking if they the cycle is connected
+    //The last two nodes are not
+    std::vector<std::vector<int>> components = network.stronglyConnected();
+    REQUIRE(components.size() == 3);
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+//                               End of Test Cases //
+/////////////////////////////////////////////////////////////////////////////////////////////
