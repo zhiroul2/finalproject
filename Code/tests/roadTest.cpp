@@ -49,7 +49,6 @@ TEST_CASE("Nodes successfully added to the RoadNetwork class", "[addNode()]") {
     }
 }
 
-<<<<<<< HEAD
 TEST_CASE("Check if edges are successfully added to the RoadNetwork class", "[addEdge()]") {
 
     SECTION("Invalid Edge not added, there cannot exist an edge between the node itself") {
@@ -124,7 +123,9 @@ TEST_CASE("Check if edges are successfully added to the RoadNetwork class", "[ad
         REQUIRE(data[0]->adjLists[1].distance == expected1.distance);
         REQUIRE(data[0]->adjLists[1].start == expected1.start);
         REQUIRE(data[0]->adjLists[1].end == expected1.end);
-=======
+    }
+}
+ 
 double calculate_dist(double ax, double ay, double bx, double by) {
     return sqrt((ax-bx)*(ax-bx) + (ay-by)*(ay-by));
 }
@@ -168,7 +169,6 @@ TEST_CASE("Edge successfully added to the RoadNetwork class", "[addEdge()]") {
         REQUIRE(graph.getNodeList().at(2)->adjLists.front().end == edges.at(3).end);
         REQUIRE(graph.getNodeList().at(2)->adjLists.front().distance == edges.at(3).distance);
         REQUIRE(graph.getNodeList().at(2)->adjLists.size() == 1);
->>>>>>> e443630bac44111911a0e6c63a846f6e91f1f7aa
     }
 }
 
@@ -211,9 +211,6 @@ TEST_CASE("Correctly find the shortest path of two nodes SIMPLE", "[shortestPath
     REQUIRE(test_path == actual_path);
 }
 
-<<<<<<< HEAD
-TEST_CASE("Correctly find the shortest path when disconnected", "[shortestPath()]") {
-=======
 TEST_CASE("correctly find the shortest path of two nodes in graph_1 (both directions works)", "[shortestPath()]") {
     RoadNetwork test_graph = RoadNetwork();
     test_graph.addNode(1, 0, 3);
@@ -268,7 +265,6 @@ TEST_CASE("correctly find the shortest path of two nodes in graph_1 (both direct
 }
 
 TEST_CASE("correctly find the shortest path when disconnected", "[shortestPath()]") {
->>>>>>> e443630bac44111911a0e6c63a846f6e91f1f7aa
      RoadNetwork test_graph = RoadNetwork();
     test_graph.addNode(1, 2, 2);
     test_graph.addNode(2, 4, 4);
@@ -423,7 +419,7 @@ TEST_CASE("strongly connected components correclty identifies a strongly connect
         }
     }
 }
-
+/*
 TEST_CASE("strongly connected components correclty identifies the connected components with one edge indirectly connected", "[stronglyConnected()]") {
     RoadNetwork network;
     //Creating a cycle with four connected nodes
@@ -443,6 +439,7 @@ TEST_CASE("strongly connected components correclty identifies the connected comp
     std::vector<std::vector<int>> components = network.stronglyConnected();
     REQUIRE(components.size() == 3);
 }
+*/
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 //                               End of Test Cases //
