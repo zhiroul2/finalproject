@@ -30,12 +30,15 @@ In order to visualize the graph, we store the double x_, double y_ as the maximu
 Algorithm:
 
 Shortest path by Dijkstra’s Algorithm:
+  
   Signature:
 /*
+  
         @param start, the starting node (first node)
         @param end, the ending node (second node)
         shortestPath find the distances between the start node and the end node.
         Returns the path consist of node id as vector<int>
+  
         */
         vector<int> shortestPath(int start, int end);
   
@@ -46,12 +49,16 @@ Test Cases:
 
 
 Strongly Connected Components:
+  
     Signature:
        /*
+  
         Finding the nodes that are strongly connected
         add the strongly connected nodes into a vector at the same index
         Returns the strongly connected components as a 2D-vector with the nodeID as int
         */
+  
+  
         vector<vector<int>> stronglyConnected();
   
 In this alorithm, we use the vector<visited> to avoid infinite loops and track each node.We use DFS transversal on a directed graph.
