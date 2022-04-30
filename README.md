@@ -8,10 +8,14 @@ All code files can be found in the ./code directory. To run the code:
 cd ./Code
 
 Complie using:
+
 make
+
 make test
 
 Run using 
+
 ./main
+
 ./test
 
