@@ -3,9 +3,12 @@ The final project repository for zhiroul2,jh80, xwang320 and mukyehc2
 
 Language use: C++
 
-All code files can be found in the code/ directory. To run the code:
+All code files can be found in the ./code directory. To run the code:
 
-Compile using make / make test
+cd ./Code
+Complie using:
+make
+make test
 
 Run using 
 ./main
