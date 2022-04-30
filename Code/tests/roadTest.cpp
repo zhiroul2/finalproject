@@ -213,6 +213,7 @@ TEST_CASE("Correctly find the shortest path of two nodes SIMPLE", "[shortestPath
 
 TEST_CASE("correctly find the shortest path of two nodes in graph_1 (both directions works)", "[shortestPath()]") {
     RoadNetwork test_graph = RoadNetwork();
+    //Add Node
     test_graph.addNode(1, 0, 3);
     test_graph.addNode(2, 4, 0);
     test_graph.addNode(3, 2, 5);
@@ -221,6 +222,7 @@ TEST_CASE("correctly find the shortest path of two nodes in graph_1 (both direct
     test_graph.addNode(6, 8, 1);
     test_graph.addNode(7, 15, 6.5);
     test_graph.addNode(8, 0, 0);
+    //Add Edge
     test_graph.addEdge(1, 2, 4);
     test_graph.addEdge(2, 1, 4);
     test_graph.addEdge(1, 3, 2);
