@@ -31,15 +31,15 @@ Algorithm:
 
 Shortest path by Dijkstra’s Algorithm:
   
-  Signature:
-/*
-  
+    Signature:
+  /*
         @param start, the starting node (first node)
         @param end, the ending node (second node)
         shortestPath find the distances between the start node and the end node.
         Returns the path consist of node id as vector<int>
   
         */
+  
         vector<int> shortestPath(int start, int end);
   
 In this alorithm, we use a priority queue to do the BFS transversal and use two vectors which has the exact same size of the Nodelist_ to keep track of the shortest path.We are not using a min-priority queue, thus the actual runtime is O(|E|log|V|).
