@@ -25,3 +25,7 @@
 ## Comments: 
 
 - A nicely detailed dev log showing your progress. Keep it up guys!
+
+# For 4/24 :
+## Grade: 100%
+- It looks like you're in a pretty good spot, and had a light week. Keep up the good work!
