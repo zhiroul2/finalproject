@@ -17,7 +17,7 @@ We will also represent the data in the form of a graph.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-We answer the question by creating a road_network class.
+We answer the question by creating a RoadNetwork class.
 We create  RoadNetwork class and store the lists of nodes(Node is an inner class for road_network class to better extract information and provide interface needed) as a vector<Node*>, each node contains an adjacency list as vector<Edge> where edge is also an inner class.
   
 
