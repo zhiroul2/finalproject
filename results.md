@@ -89,12 +89,19 @@ For these sets of data, line two contains negative y coordinate and line three c
 Edge data test is similar to node data test, except that edge data sets have four elements: edgeID, startNode, endNode, and distance. All of them should be positive. Similarly, we created a file (the picture below). In this case, line 4, 5, 7, 8 will all be eliminated and the data sets loaded to our map<int, EdgeData> have the size of 4.
   
   0 1 2 5
+  
   1 2 3 6
+  
   2 3 4 8
+  
   3 -1 2 9
+  
   4 7 8 -10
+  
   5 4 9 10
+  
   -6 5 7 8
+  
   7 3 -1 5
 
 
