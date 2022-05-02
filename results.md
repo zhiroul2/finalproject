@@ -47,6 +47,7 @@ In this alorithm, we use a priority queue to do the BFS transversal and use two 
 
 Test Cases:
 
+  
 
 Strongly Connected Components:
   
@@ -68,7 +69,15 @@ In this alorithm, we use the vector<visited> to avoid infinite loops and track e
 Test Cases:
   
   
-  dataTest.cpp:
+
+  
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+  DataSets and result:
+ 
+ Data correction:
+  
+   dataTest.cpp:
   
 For testing the correctness and accuracy of our code, we have completed two parts: dataTest.cpp and roadTest.cpp. The dataTest file checks whether the input files (files containing the data of nodes and edges) are successfully loaded and is separated into testing node data and edge data. For each node in the node input file, the node ID, x coordinate, and y coordinate should all be positive. When the file is loaded, all the data with negative node ID, negative x, negative y coordinate will be eliminated based on the code we wrote and will not be stored into our map<int Coordinate>. Based on this, we created a test data file (the picture below) with several valid data sets, but also some other invalid ones.
   
@@ -106,12 +115,5 @@ Edge data test is similar to node data test, except that edge data sets have fou
 
 
   
-  
---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  
-  DataSets and result:
-  
-  
-
 
 
