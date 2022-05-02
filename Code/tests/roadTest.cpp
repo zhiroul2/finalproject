@@ -129,3 +129,23 @@ TEST_CASE("strongly connected components forming a circle", "[stronglyConnected(
     vector<vector<int>> connected = test_graph.stronglyConnected();
     REQUIRE(connected.size() == 1);
 }
+
+TEST_CASE("strongly connected components correclty identifies the connected components with one edge indirectly connected", "[stronglyConnected()]") {
+    RoadNetwork network;
+    //Creating a cycle with four connected nodes
+    network.addNode(0, 0, 3); network.addNode(1, 1, 4); network.addNode(2, 2, 3); network.addNode(3, 1, 0);
+    network.addEdge(0, 1, 1);
+    network.addEdge(1, 2, 1);
+    network.addEdge(2, 3, 1);
+    network.addEdge(3, 4, 1);
+    //Adding the node that is connected with one of the node within the cycle
+    network.addNode(4, 3, 4);
+    network.addEdge(4, 2, 2);
+    //Adding the node that is connected to the last node
+    network.addNode(5, 4, 5);
+    network.addEdge(4, 5, 2);
+    //Checking if they the cycle is connected
+    //The last two nodes are not
+    std::vector<std::vector<int>> components = network.stronglyConnected();
+    REQUIRE(components.size() == 1);
+}

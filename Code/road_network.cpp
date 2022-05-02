@@ -133,7 +133,7 @@ void RoadNetwork::helper(vector<bool>& visited, int i , vector<int>& vect){
     vect.push_back(i);
     visited[i] = true;
     for (auto it : Nodelist_[i]->adjLists){
-        if (!visited[it.end]){
+        if (!visited[it.end]){ 
             if (it.end < int(Nodelist_.size())){
                 helper(visited, it.end, vect);
             }
@@ -163,11 +163,10 @@ void RoadNetwork::viewGraph(string filename){
     unsigned height = int(y_) + 1;
     unsigned width = int(x_) + 1;
     cs225::PNG* canvas = new cs225::PNG(width, height); 
+    //Don't change//
     for (auto cur_node : Nodelist_){
-        if (cur_node == NULL){
-            break;
-        }
-        for (auto a : cur_node->adjLists){
+        if (cur_node != NULL){
+            for (auto a : cur_node->adjLists){
             if (Nodelist_[a.start]->x_ ==  Nodelist_[a.end]->x_){
                 double high = max(Nodelist_[a.start]->y_, Nodelist_[a.end]->y_);
                 int low = min(Nodelist_[a.start]->y_, Nodelist_[a.end]->y_);
@@ -192,10 +191,13 @@ void RoadNetwork::viewGraph(string filename){
                 for (int i = int(Nodelist_[a.end]->x_); i < Nodelist_[a.start]->x_; i++){
                      canvas->getPixel(i, Nodelist_[a.end]->y_ + slope*(count)).l = 0;
                      count++;
-                }
+                }  
             }
         }
+        }
     }
+    //Don't change
+    
     vector<vector<int>> vect = stronglyConnected();
     int i = 10; double j = 0.1;
     for (auto part: vect){
@@ -210,4 +212,5 @@ void RoadNetwork::viewGraph(string filename){
     }
     canvas->writeToFile(filename);
 }
+
 

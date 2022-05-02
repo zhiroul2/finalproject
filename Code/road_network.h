@@ -34,9 +34,9 @@ class RoadNetwork {
                 end = end_;
                 distance = distance_;
             }
-            int start;
+            int start; 
             int end;
-            double distance;
+            double distance; 
         };
 
         /*
@@ -54,8 +54,8 @@ class RoadNetwork {
             }
             int NodeID_;
             double x_;
-            double y_;
-            int adj;
+            double y_; 
+            int adj; 
             vector<Edge> adjLists;//adjacency list
         };
 
@@ -70,7 +70,7 @@ class RoadNetwork {
         /*
         Draws out the nodes and the edges of the RoadNetwork to a PNG image
         */
-        void viewGraph(string filename);
+        virtual void viewGraph(string filename);
 
         /*
         Returns the number of edges of a RoadNetwork object
