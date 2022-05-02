@@ -71,11 +71,17 @@ Test Cases:
   dataTest.cpp:
   
 For testing the correctness and accuracy of our code, we have completed two parts: dataTest.cpp and roadTest.cpp. The dataTest file checks whether the input files (files containing the data of nodes and edges) are successfully loaded and is separated into testing node data and edge data. For each node in the node input file, the node ID, x coordinate, and y coordinate should all be positive. When the file is loaded, all the data with negative node ID, negative x, negative y coordinate will be eliminated based on the code we wrote and will not be stored into our map<int Coordinate>. Based on this, we created a test data file (the picture below) with several valid data sets, but also some other invalid ones.
+  
   0 1.2 2.3
+  
   1 3.4 -4.5
+  
   -2 3 5
+  
   3 2 4
+  
   4 5.7 6
+  
   5 5 8
   
 For these sets of data, line two contains negative y coordinate and line three contains negative nodeID. So the final data sets that will be stored into our map<int Coordinate> will only have a size of 4. If the size is not equal to 4, or any negative numbers show in our map, the node test case will not be passed.
