@@ -1,9 +1,10 @@
 # zhiroul2-jh80-xwang320-mukyehc2
-The final project repository for zhiroul2,jh80, xwang320 and mukyehc2
+The final project repository for zhiroul2, jh80, xwang320 and mukyehc2
 
 Language use: C++
 
-The written report can be found on the main page. All code files(including code for data correction and the graph class) and the output png image can be found in the ./code directory. The raw data files is placed in ./Code/Data as txt files.The test files are in ./Code/Test. 
+The written report can be found on the main page. All code files (including code for data correction and the graph class) and the output png image can be found in the ./Code directory. The raw data files is placed in ./Code/Data as txt files. The test files are in ./Code/Test. 
+
 To run the code:
 
 cd ./Code
@@ -14,7 +15,7 @@ make
 
 make test
 
-Run using 
+Run using:
 
 ./main
 
