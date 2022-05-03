@@ -435,11 +435,11 @@ TEST_CASE("strongly connected components correclty identifies the connected comp
     network.addEdge(4, 2, 2);
     //Adding the node that is connected to the last node
     network.addNode(5, 4, 5);
-    network.addEdge(4, 5, 2);
+    network.addEdge(5, 4, 2);
     //Checking if they the cycle is connected
     //The last two nodes are not
     std::vector<std::vector<int>> components = network.stronglyConnected();
-    REQUIRE(components.size() == 1);
+    REQUIRE(components.size() == 2);
 }
 
 
