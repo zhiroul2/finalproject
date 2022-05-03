@@ -13,12 +13,12 @@ In order to solve these two problems, one algorithm is to find the shortest rout
 
 We will use the dataset that contains the information of the x and y coordinates of every eixsted node in a city, the distance between two nodes, the nodeID, and the edgeID. We will be using these information to approach the leading questions raised above.
 
-We will also represent the data in the form of a directed graph, which is a design choice that eliminates confusion when determining the strongly connected component. Thus, we choose to only store the edge (if there exists one) in the start node in addEdge function. 
+We will also represent the data in the form of a directed graph, which is a design choice that eliminates confusion when determining the strongly connected component. Thus, we choose to only store the edge (if there exists one) in the start node in addEdge function. We use the structure of adjacency list since this is a directed graph and our n*n is significantly larger than m.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 We answer the question by creating a RoadNetwork class.
-We create  RoadNetwork class and store the lists of nodes(Node is an inner class for road_network class to better extract information and provide interface needed) as a vector<Node*>, each node contains an adjacency list as vector<Edge> where edge is also an inner class.We use the structure of adjacency list since this is a directed graph and our n*n is significantly larger than m.
+We create  RoadNetwork class and store the lists of nodes(Node is an inner class for road_network class to better extract information and provide interface needed) as a vector<Node*>, each node contains an adjacency list as vector<Edge> where edge is also an inner class.
   
 
 in our Node class, we store the int Nodeid, double x_, double y_, vector<edge> adjLists, and in each edge class, it stores int start, int end, double distance.

@@ -192,13 +192,7 @@ void RoadNetwork::viewGraph(string filename) {
                 for (int i = int(Nodelist_[a.end]->x_); i < Nodelist_[a.start]->x_; i++){
                      canvas->getPixel(i, Nodelist_[a.end]->y_ + slope*(count)).l = 0;
                      count++;
-<<<<<<< HEAD
                 }  
-=======
-                    }
-                
-                ////////////////////
->>>>>>> 9e97f56875d8949eecfc587c10674e232314e428
             }
         }
         }
