@@ -107,7 +107,7 @@ In this test case, the graph is more complicated than the “SIMPLE” test case
   DataSets and result:
  
  Data correction:
-  we have two function included, and both read data from the file 
+  we have two function included which are the edgeData and nodeData, and both read data from the file and take the data points out. For the nodeData, it contains  the node ID, x coordinate, and y coordinate in a row, and we just need to take the x and y out to locate the node location on the map; for the edgeData it is consisted of 4 parts edgeID, startNode, endNode, and the distance from start to end. What we do is take those data out and store them into our map, and we do operation on it. 
   
    dataTest.cpp:
   
