@@ -65,12 +65,12 @@ class RoadNetwork {
         @param y, the y coordinate of the node
         addNodes creates a new Node of a pointer and add the Node to the Nodelist_
         */
-        void addNode(int id, double x, double y);
+        virtual void addNode(int id, double x, double y);
 
         /*
         Draws out the nodes and the edges of the RoadNetwork to a PNG image
         */
-        virtual void viewGraph(string filename);
+        void viewGraph(string filename);
 
         /*
         Returns the number of edges of a RoadNetwork object
