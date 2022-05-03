@@ -109,7 +109,7 @@ In this test case, the graph is more complicated than the “SIMPLE” test case
  Data correction:
   we have two function included which are the edgeData and nodeData, and both read data from the file and take the data points out. For the nodeData, it contains  the node ID, x coordinate, and y coordinate in a row, and we just need to take the x and y out to locate the node location on the map; for the edgeData it is consisted of 4 parts edgeID, startNode, endNode, and the distance from start to end. What we do is take those data out and store them into our map, and we do operation (road_Network) on it. For the network, we use addEdge and addNode maped each points on the road map, then we used some helper function like StronglyConnected to help each data point are connected to each other, and used viewgraph to finish the PNG map. 
   
-  The PNG resolution is not that ideal, so for the edges that we made are being cut somehow, and we tried to arrange the edge by editing the slope being round up for decimal above 0.5 and round down else case.The different colors on the png file named "graphimage.png" is used to showcase the "strongly connected components", each set of color indicates a directed cycle.
+  The PNG resolution is not that ideal, so for the edges that we made are being cut somehow, and we tried to arrange the edge by editing the slope being round up for decimal above 0.5 and round down else case.Due to the nature of the large amount of dataset, there's also rounding of coordinates and they are all 1/10 of their orginal value for the canvas to draw. The different colors on the png file named "graphimage.png" is used to showcase the "strongly connected components", each set of color indicates a directed cycle.
   
    dataTest.cpp:
   
