@@ -17,18 +17,19 @@ int main() {
         graph.addEdge(b.second.startNode, b.second.endNode, b.second.distance);
     }
     RoadNetwork test = RoadNetwork();
-    test.addNode(0, 2, 2);
-    test.addNode(1, 3, 3);
-    test.addNode(3, 5, 5);
-    test.addNode(2, 2, 2);
-    test.addEdge(0, 1, 2);
-    test.addEdge(1, 2, 6);
+    test.addNode(0, 20, 20);
+    test.addNode(1, 30, 30);
+    test.addNode(3, 70, 80);
+    test.addNode(2, 20, 20);
+    test.addEdge(0, 3, 20);
+    test.addEdge(1, 2, 60);
     //cout<<graph.EdgeNumber()<<endl; 
     for (auto a: test.shortestPath(0, 2)){
         cout<<a<<endl;
     }
+    test.viewGraph("simple.png");
     //cout<<graph.stronglyConnected().size()<<endl;
-    graph.viewGraph("ChangeName.png");
+    graph.viewGraph("graphImage.png");
     //cout<<graph.stronglyConnected().size()<<endl;// make sure that it's inserted
     return 1;
 }

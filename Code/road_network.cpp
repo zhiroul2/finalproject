@@ -137,7 +137,7 @@ void RoadNetwork::helper(vector<bool>& visited, int i , vector<int>& vect) {
     vect.push_back(i);
     visited[i] = true;
     for (auto it : Nodelist_[i]->adjLists){
-        if (!visited[it.end]){
+        if (!visited[it.end]){ 
             if (it.end < int(Nodelist_.size())){
                 helper(visited, it.end, vect);
             }
@@ -164,11 +164,10 @@ void RoadNetwork::viewGraph(string filename) {
     unsigned height = int(y_) + 1;
     unsigned width = int(x_) + 1;
     cs225::PNG* canvas = new cs225::PNG(width, height); 
+    //Don't change//
     for (auto cur_node : Nodelist_){
-        if (cur_node == NULL){
-            break;
-        }
-        for (auto a : cur_node->adjLists){
+        if (cur_node != NULL){
+            for (auto a : cur_node->adjLists){
             if (Nodelist_[a.start]->x_ ==  Nodelist_[a.end]->x_){
                 double high = max(Nodelist_[a.start]->y_, Nodelist_[a.end]->y_);
                 int low = min(Nodelist_[a.start]->y_, Nodelist_[a.end]->y_);
@@ -177,17 +176,7 @@ void RoadNetwork::viewGraph(string filename) {
                 }
             }
             if (Nodelist_[a.start]->x_ < Nodelist_[a.end]->x_){
-                double slope = (Nodelist_[a.end]->y_ - Nodelist_[a.start]->y_)/(Nodelist_[a.end]->x_ - Nodelist_[a.start]->x_);
-                double decimal=0;
-                if (abs(slope) > 1）{
-                    for (double i = 0; i < slope; i++) {
-                        decimal = slope - i;
-                }
-                if (decimal >= 0.5) {
-                    slope = slope - decimal + 1;
-                } else {
-                    slope = slope -decimal;
-                }
+                int slope = (Nodelist_[a.end]->y_ - Nodelist_[a.start]->y_)/(Nodelist_[a.end]->x_ - Nodelist_[a.start]->x_);
                 int count = 0;
                 for (int i = int(Nodelist_[a.start]->x_); i < Nodelist_[a.end]->x_; i++){
                      canvas->getPixel(i, Nodelist_[a.start]->y_ + slope*(count)).l = 0;
@@ -195,31 +184,27 @@ void RoadNetwork::viewGraph(string filename) {
                 }
             } 
             if (Nodelist_[a.start]->x_ > Nodelist_[a.end]->x_ ){
-                double slope = 0;
+                int slope = 0;
                 if ((Nodelist_[a.start]->y_ - Nodelist_[a.end]->y_) > 1){
                    slope = (Nodelist_[a.start]->y_ - Nodelist_[a.end]->y_)/(Nodelist_[a.start]->x_ - Nodelist_[a.end]->x_);
                 } 
-                double decimal=0;
-                if (abs(slope) > 1）{
-                    for (double i = 0; i < slope; i++) {
-                        decimal = slope - i;
-                }
-                if (decimal >= 0.5) {
-                    slope = slope - decimal + 1;
-                } else {
-                    slope = slope -decimal;
-                }
-                    for (int i = int(Nodelist_[a.end]->x_); i < Nodelist_[a.start]->x_; i++){
+                int count = 0;
+                for (int i = int(Nodelist_[a.end]->x_); i < Nodelist_[a.start]->x_; i++){
                      canvas->getPixel(i, Nodelist_[a.end]->y_ + slope*(count)).l = 0;
                      count++;
+<<<<<<< HEAD
+                }  
+=======
                     }
                 
-                int count = 0;
-                
                 ////////////////////
+>>>>>>> 9e97f56875d8949eecfc587c10674e232314e428
             }
         }
+        }
     }
+    //Don't change
+    
     vector<vector<int>> vect = stronglyConnected();
     int i = 10; double j = 0.1;
     for (auto part: vect){
@@ -234,4 +219,5 @@ void RoadNetwork::viewGraph(string filename) {
     }
     canvas->writeToFile(filename);
 }
+
 
