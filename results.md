@@ -111,6 +111,9 @@ In this test case, the graph is more complicated than the “SIMPLE” test case
   
   The PNG resolution is not that ideal, so for the edges that we made are being cut somehow, and we tried to arrange the edge by editing the slope being round up for decimal above 0.5 and round down else case.Due to the nature of the large amount of dataset, there's also rounding of coordinates and they are all 1/10 of their orginal value for the canvas to draw. The different colors on the png file named "graphImage.png" (can be found at ./Code) is used to showcase the "strongly connected components", each set of color indicates a directed cycle.
   
+  
+ ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
    dataTest.cpp:
   
 For testing the correctness and accuracy of our code, we have completed two parts: dataTest.cpp and roadTest.cpp. The dataTest file checks whether the input files (files containing the data of nodes and edges) are successfully loaded and is separated into testing node data and edge data. For each node in the node input file, the node ID, x coordinate, and y coordinate should all be positive. When the file is loaded, all the data with negative node ID, negative x, negative y coordinate will be eliminated based on the code we wrote and will not be stored into our map<int Coordinate>. Based on this, we created a test data file (the picture below) with several valid data sets, but also some other invalid ones.
