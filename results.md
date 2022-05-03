@@ -47,6 +47,16 @@ In this alorithm, we use a priority queue to do the BFS transversal and use two 
 
 Test Cases:
 
+1.	The test case “reverse direction doesn’t work if there exists only one direction from one node to another” checks whether reverse direction could work if there is only one way from node A to node B. in this test, we only called addEdge function from node 1 to 2 and from 2 to 3. So if the shortestPath function is called from 3 to 1, the output will be empty.
+  
+2.	The test case “correctly find the shortest path of two nodes SIMPLE” checks the validity of the shortest path in the simplest way. Node 1 to 6 is a straight line with the least distance, and there is another path that will go through node 7, which is a point that deviated from the straight line and takes more distance to go. The output correctly produces 123456 as output after calling the shortestPath function.
+  
+3.	The test case “correctly find the shortest path of two nodes in graph_1 (both directions work)” checks whether from node A to node B and from node B to node A will produce the same route as the output, but the sequence of the nodes shown in the output vector will be in the reverse order. The conditions are that two neighboring nodes can be traveled in both directions, in another word, if addEdge A to B is used, addEdge B to A should always be used. The output did produce the same routes with reversed order of node sequence.
+In this test case, the graph is more complicated than the “SIMPLE” test case above. Traveling from nodes 7 to 8 has multiple possible routes with different distances. The output exactly showed the correct routes with the least distance and with the correct sequence of nodes.
+  
+4.	The test case “correctly find the shortest path when disconnected” checks that calling the shortestPath function of two nodes in two disconnected graphs will produce an empty vector, which has a size 0.
+  
+5.	The test case “correctly find the shortest path when multiple edges involved” checks if there are two nodes that have multiple edges connected with different distances, the shortestPath function will discover that and select the least distance one. It did find the shortest route in this case. So when multiple edges are connected between two nodes, the function could select the least one.
   
 
 Strongly Connected Components:
@@ -81,25 +91,7 @@ Test Cases:
 6. The sixth test case for stronglyConnected() is to test if the algorithm identifies a cycle as two connected components. The reason being that our graph structure stores directed edges, so the fourth, fifth, and the sixth node will be counted as another components rather than all of the nodes being one big connected components. This is one of the more complex test cases for stronglyConnected(). The test case successfully showed that there are two connected components, and the output matches the expected vectors. 
 
 7. The seventh test case stronglyConnected() is to test if the algorithm identifies a cycle with one node attached to it by an edge, and another node attached to the last node by another edge as two connected components. The same reasoning from the sixth test case is being tested by this test case, because out graph stores directed edges, the last node that is attached does not count as part of the connected component of the cycle. The test case successfully showed that there are two connected components.
-  
-  
-  
-Test cases: 
 
-Shortest Paths:
-
-1.	The test case “reverse direction doesn’t work if there exists only one direction from one node to another” checks whether reverse direction could work if there is only one way from node A to node B. in this test, we only called addEdge function from node 1 to 2 and from 2 to 3. So if the shortestPath function is called from 3 to 1, the output will be empty.
-  
-2.	The test case “correctly find the shortest path of two nodes SIMPLE” checks the validity of the shortest path in the simplest way. Node 1 to 6 is a straight line with the least distance, and there is another path that will go through node 7, which is a point that deviated from the straight line and takes more distance to go. The output correctly produces 123456 as output after calling the shortestPath function.
-  
-3.	The test case “correctly find the shortest path of two nodes in graph_1 (both directions work)” checks whether from node A to node B and from node B to node A will produce the same route as the output, but the sequence of the nodes shown in the output vector will be in the reverse order. The conditions are that two neighboring nodes can be traveled in both directions, in another word, if addEdge A to B is used, addEdge B to A should always be used. The output did produce the same routes with reversed order of node sequence.
-In this test case, the graph is more complicated than the “SIMPLE” test case above. Traveling from nodes 7 to 8 has multiple possible routes with different distances. The output exactly showed the correct routes with the least distance and with the correct sequence of nodes.
-  
-4.	The test case “correctly find the shortest path when disconnected” checks that calling the shortestPath function of two nodes in two disconnected graphs will produce an empty vector, which has a size 0.
-  
-5.	The test case “correctly find the shortest path when multiple edges involved” checks if there are two nodes that have multiple edges connected with different distances, the shortestPath function will discover that and select the least distance one. It did find the shortest route in this case. So when multiple edges are connected between two nodes, the function could select the least one.
-
-  
 
   
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
