@@ -89,6 +89,7 @@ Test Cases:
   DataSets and result:
  
  Data correction:
+  we have two function included, and both read data from the file 
   
    dataTest.cpp:
   
