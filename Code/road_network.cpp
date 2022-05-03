@@ -48,7 +48,7 @@ void RoadNetwork::addNode(int id, double x, double y){
 
 void RoadNetwork::addEdge(int start, int end, double distance) {
     // Cheking the starting point and the ending points are valid
-    if (0 <= start < int(Nodelist_.size()) && 0 <= end < int(Nodelist_.size())){
+    if (0 <= start < int(Nodelist_.size()) && 0 <= end < int(Nodelist_.size()) && start != end) {
         //Making sure that the node at the index start and index end is not a nullptr
         if (Nodelist_[start] != NULL && Nodelist_[end] != NULL) {
             //adding the possible neighbors (in terms of its starting point and ending point and distance)
@@ -59,6 +59,8 @@ void RoadNetwork::addEdge(int start, int end, double distance) {
             //adding the number of edges, the connections between nodes
             edge++;
         }
+    } else {
+        throw std::invalid_argument("the edge attempting to add is invalid");
     }
 }
 
@@ -94,8 +96,10 @@ vector<int> RoadNetwork::shortestPath(int start, int end) {
     //Creating a priority queue to find the shorest path, a vector to store pairs of nodes, greater for comparisons
     //BFS
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    //Initialize the starting point
     pq.push(make_pair(start, 0));
     distance[start] = 0;
+    //Process the rest of the nodes
     while(!pq.empty()) {
         int fir_node = pq.top().first;
         pq.pop();
@@ -129,7 +133,7 @@ vector<int> RoadNetwork::shortestPath(int start, int end) {
 
  }
 
-void RoadNetwork::helper(vector<bool>& visited, int i , vector<int>& vect){
+void RoadNetwork::helper(vector<bool>& visited, int i , vector<int>& vect) {
     vect.push_back(i);
     visited[i] = true;
     for (auto it : Nodelist_[i]->adjLists){
@@ -144,10 +148,7 @@ void RoadNetwork::helper(vector<bool>& visited, int i , vector<int>& vect){
 vector<vector<int>> RoadNetwork::stronglyConnected() {
     vector<vector<int>> vect;
     int size = Nodelist_.size();
-    vector<bool> visited = vector<bool>(size);
-    for (int i = 0; i < size; i++){
-        visited[i] = false;
-    }
+    vector<bool> visited = vector<bool>(size, false);
     for (int i = 0; i < size; i++){
         if (!visited[i] && Nodelist_[i] != NULL) {
             vector<int> temp;
@@ -159,7 +160,7 @@ vector<vector<int>> RoadNetwork::stronglyConnected() {
     return vect;
 }
 
-void RoadNetwork::viewGraph(string filename){
+void RoadNetwork::viewGraph(string filename) {
     unsigned height = int(y_) + 1;
     unsigned width = int(x_) + 1;
     cs225::PNG* canvas = new cs225::PNG(width, height); 
@@ -191,7 +192,13 @@ void RoadNetwork::viewGraph(string filename){
                 for (int i = int(Nodelist_[a.end]->x_); i < Nodelist_[a.start]->x_; i++){
                      canvas->getPixel(i, Nodelist_[a.end]->y_ + slope*(count)).l = 0;
                      count++;
+<<<<<<< HEAD
                 }  
+=======
+                    }
+                
+                ////////////////////
+>>>>>>> 9e97f56875d8949eecfc587c10674e232314e428
             }
         }
         }
