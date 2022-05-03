@@ -323,8 +323,7 @@ TEST_CASE("Strongly connected components forming a circle aka one connected comp
     REQUIRE(connected.size() == 1);
 }
 
-<<<<<<< HEAD
-=======
+
 TEST_CASE("Strongly connected components correctly identifies the components", "[stronglyConnected()]") {
     RoadNetwork network;
     //Forming a circle
@@ -424,7 +423,7 @@ TEST_CASE("strongly connected components correclty identifies a strongly connect
     }
 }
 
->>>>>>> 9e97f56875d8949eecfc587c10674e232314e428
+
 TEST_CASE("strongly connected components correclty identifies the connected components with one edge indirectly connected", "[stronglyConnected()]") {
     RoadNetwork network;
     //Creating a cycle with four connected nodes
@@ -444,11 +443,3 @@ TEST_CASE("strongly connected components correclty identifies the connected comp
     std::vector<std::vector<int>> components = network.stronglyConnected();
     REQUIRE(components.size() == 2);
 }
-<<<<<<< HEAD
-=======
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-//                               End of Test Cases //
-/////////////////////////////////////////////////////////////////////////////////////////////
->>>>>>> 9e97f56875d8949eecfc587c10674e232314e428

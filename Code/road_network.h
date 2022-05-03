@@ -12,7 +12,7 @@ class RoadNetwork {
         /*
         Constructor that sets the default value of a RoadNetwork class
         */
-        RoadNetwork() { Nodelist_ = vector<Node*>(); x_= 0; y_ = 0;}
+        RoadNetwork() { Nodelist_ = vector<Node*>(); x_= 0; y_ = 0; edge = 0;}
 
         /*
         Destructor for the RoadNetwork class
@@ -127,7 +127,6 @@ class RoadNetwork {
         //x_ and y_ stores the largest coordinate
         double x_; 
         double y_;
-
         //helper function to find which nodes are connected, used for strongly connected component function
         void helper(vector<bool>& visited, int i, vector<int>& vect);
 };
