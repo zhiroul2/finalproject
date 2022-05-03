@@ -19,6 +19,7 @@ int main() {
     cout<<"The node number is "<<graph.NodeNumber() <<endl;
     cout<<"The edge number is "<<graph.EdgeNumber() <<endl;
     cout<< graph.stronglyConnected().size() << endl;
+    cout << "Whether there's a path bettwen 1 and 17000: " << !graph.shortestPath(1, 17000).empty()<<endl;
     graph.viewGraph("graphImage.png");
     return 1;
 }
