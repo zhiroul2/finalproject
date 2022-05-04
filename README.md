@@ -24,3 +24,8 @@ make test
 
 ./test
 
+# Tests created
+
+We have created tests to ensure that our data parsing are done correctly to eliminate possible errors that might be caused when running our functions. We have also created test cases that test for any helper/easier functionalities. On top of that, we also constructued thorough test cases that test for our major functions (shorestpath and stronglyConnected) to ensure that our functions behave like we expected. 
+
+
