@@ -1,5 +1,5 @@
 ## Requirements: 
-- Code Base: 
+- Code Base: Organisation 90%, Efficiency 80%, Execution 90%, Goals, 90%
 	- [x] Code written in cpp and can run on EWS, 
 	- [ ] Command line interface, altering input output locations
 	- [ ] No obvious inefficiency
@@ -29,15 +29,15 @@
 		- same functionality tested twice with same context/scope. (RoadNetwork addEdge tests)
 		- shortestPath tests small, edge cases but no large tests,.
 		- SCC small tests, edge cases, but no large tests.
-- README: 
+- README: 90%
 	- [x] Describes the physical location of all major deliverables
 		-  Written report, video, code, output, input and test locations present
 	- [ ] Instructions on building and running executable, testing suite
-		- Instructions present, but convoluted and not clear.
+		- Instructions present, but  not clear.
 	- [ ] How to define input, output data,
 		- Missing
 	- [x] A general description of tests.
-- Written Report : 
+- Written Report :  90% 
 	- [ ] Contains some summary of some part of the full scale run for each algorithm
 		- Summary of algorithms exist but do not contain any information about the full scale run and its results.
 		- Dijkstra Complexity is not accurate.
@@ -45,7 +45,7 @@
 	- [ ] Directly addresses leading question, how was it answered, what was discovered? If unsuccessfull what worked and what didn't?
 		- No mention of what result was reached by doing this analysis on the proposed dataset.
 		- The leading question of how can we find shortest path, and how can we find an area of concentration is answered with algos.
-- Final Presentation : 
+- Final Presentation : Content 80%, Skills 90%
 	- [ ] Video less than 10 mins
 		- Video is 17 mins.
 	- [x] Video has summary of goals and what was accomplished
