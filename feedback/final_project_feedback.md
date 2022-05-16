@@ -8,10 +8,9 @@
 
 Meanwhile, your inner loop will run a total of V times in the worst case (totally connected graph) and the built-in runtime of the priority queue push is log(n) where n is the size of the queue. Which, as has already been pointed out, is not V but (E). So the total runtime is (V log (E)). Combined with the fact that the outer loop can call the same vertex multiple times (one for each edge!) and this is significantly more inefficient then proposed.
 
-To achieve better performance you would need to update the existing values in your priority queue rather than push new values in.
+To achieve better performance you would need to update the existing values in your priority queue rather than push new values in.`
 		- bad usage of the using keyword,
 		- `using namespace std;`, can import  function, variable declarations that might clash with what you've already declared.
-
 	- [x] Can run on entire proposed dataset
 	- [ ] Appropriately named variables, classes, functions,
 		- multiple variables have been given names like, a , b , x ,y , vect...
