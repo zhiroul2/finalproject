@@ -56,4 +56,4 @@ To achieve better performance you would need to update the existing values in yo
 
 
 #### Note : 
--  A crossed through requirement indicates that that particular requirement was fulfilled.(100%)
+-  A requirement with a checkmark indicates that that particular requirement was fulfilled.(100%)
