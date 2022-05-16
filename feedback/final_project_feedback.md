@@ -4,7 +4,12 @@
 	- [ ] Command line interface, altering input output locations
 	- [ ] No obvious inefficiency
 		- Dijkstra efficiency problems. I believe the efficiency problem is really similar to the one that another group had, so I've copied the explanation that Professor Solomon provided, to clear things up.
-		- bad usage of the using keyword,`
+		- `On code efficiency: Dijkstras does not match the proposed efficiency -- instead of O(E log V), your solution is O( E * (V log (E))). The main problem here is that your priority queue can have E total objects inserted and processed -- the first time you go from infinity to not infinity but then potentially every subsequent edge can be an 'improvement' to some vertex. A test case example to consider is a totally connected graph where all edges are (infinity - 1) except one edge which is 1 and repeat this process for that new node. Let that new node have edges (infinity - 3) except one edge 1 (that connects to a third node...). Every time you pick the new minimum (dist 1, 2, 3, ...) you are also updating all your other vertices you havent seen from inf to inf-1, inf-2, inf-3, ... You can start to already see how this will cause a problem -- your priority queue is going to add a new object for *every* edge and your code doesn't remove or replace the 'old' version! 
+
+Meanwhile, your inner loop will run a total of V times in the worst case (totally connected graph) and the built-in runtime of the priority queue push is log(n) where n is the size of the queue. Which, as has already been pointed out, is not V but (E). So the total runtime is (V log (E)). Combined with the fact that the outer loop can call the same vertex multiple times (one for each edge!) and this is significantly more inefficient then proposed.
+
+To achieve better performance you would need to update the existing values in your priority queue rather than push new values in.`
+		- bad usage of the using keyword,
 		- `using namespace std;`, can import  function, variable declarations that might clash with what you've already declared.
 
 	- [x] Can run on entire proposed dataset
