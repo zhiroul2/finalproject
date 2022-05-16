@@ -1,0 +1,54 @@
+## Requirements: 
+- Code Base: 
+	- [x] Code written in cpp and can run on EWS, 
+	- [ ] Command line interface, altering input output locations
+	- [ ] No obvious inefficiency
+		- Dijkstra efficiency problems. I believe the efficiency problem is really similar to the one that another group had, so I've copied the explanation that Professor Solomon provided, to clear things up.
+		- bad usage of the using keyword,`
+		- `using namespace std;`, can import  function, variable declarations that might clash with what you've already declared.
+
+	- [x] Can run on entire proposed dataset
+	- [ ] Appropriately named variables, classes, functions,
+		- multiple variables have been given names like, a , b , x ,y , vect...
+		- names should contain more information about what they represent.
+		- functions have been properly named.
+	- [ ] Organized comments detailing input, output, and intended behaviour
+		- most functions have been commented,
+		- inconsistent commenting - function docstring missing from some functions, function body comments missing from some functions.
+	- [x] No unnecessary code
+	- [ ] Can run all proposed algorithms and have tests for all proposed algorithms that prove that it works
+		- Runs all proposed algorithms.
+		- Test cases don't properly check file reading, checking that all node values are positive is not enough
+		- Test cases don't check all edge cases for adding nodes to graph objects.(really small sample sizes)
+		- bounds check bug in addEdge. (0 < start < u_bound).
+		- same functionality tested twice with same context/scope. (RoadNetwork addEdge tests)
+		- shortestPath tests small, edge cases but no large tests,.
+		- SCC small tests, edge cases, but no large tests.
+- README: 
+	- [x] Describes the physical location of all major deliverables
+		-  Written report, video, code, output, input and test locations present
+	- [ ] Instructions on building and running executable, testing suite
+		- Instructions present, but convoluted and not clear.
+	- [ ] How to define input, output data,
+		- Missing
+	- [x] A general description of tests.
+- Written Report : 
+	- [ ] Contains some summary of some part of the full scale run for each algorithm
+		- Summary of algorithms exist but do not contain any information about the full scale run and its results.
+		- Dijkstra Complexity is not accurate.
+	- [x] Describes which tests were performed to show that each algorithm worked
+	- [ ] Directly addresses leading question, how was it answered, what was discovered? If unsuccessfull what worked and what didn't?
+		- No mention of what result was reached by doing this analysis on the proposed dataset.
+		- The leading question of how can we find shortest path, and how can we find an area of concentration is answered with algos.
+- Final Presentation : 
+	- [ ] Video less than 10 mins
+		- Video is 17 mins.
+	- [x] Video has summary of goals and what was accomplished
+	- [x] Video has high level overview of the work put in.
+	- [x] Video has an ending that explains the leading question
+	- [ ]  Individual thoughts.
+		-  Video is missing individual thoughts. which is fine, but the screen recording for one team member seems to have failed/ is not present.
+
+
+#### Note : 
+-  A crossed through requirement indicates that that particular requirement was fulfilled.(100%)
