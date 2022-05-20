@@ -11,8 +11,6 @@ using namespace std;
 
 //using namespace cs225;
 
-typedef pair<int,int> myPair;
-
 RoadNetwork::~RoadNetwork() {
     clear();
 }
@@ -95,21 +93,24 @@ vector<int> RoadNetwork::shortestPath(int start, int end) {
     }
     //Creating a priority queue to find the shorest path, a vector to store pairs of nodes, greater for comparisons
     //BFS
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    priority_queue<int, vector<int>, greater<int>> pq;
     //Initialize the starting point
-    pq.push(make_pair(start, 0));
+    vector<bool> visited(size, false);
+    pq.push(start);
     distance[start] = 0;
-    //Process the rest of the nodes
     while(!pq.empty()) {
-        int fir_node = pq.top().first;
+        int fir_node = pq.top();
+        visited[fir_node] = true;
         pq.pop();
         vector<Edge> adj_edges = Nodelist_[fir_node]->adjLists;
         for(auto it: adj_edges){
             int sec_node = it.end;
             int weight = it.distance;
             if(distance[sec_node] > distance[fir_node] + it.distance) {
+                if (!visited[sec_node]){
+                    pq.push(sec_node);
+                }
                 distance[sec_node] = distance[fir_node] + it.distance;
-                pq.push(make_pair(sec_node, distance[sec_node]));
                 prev[sec_node] = fir_node;
             }
         }
@@ -198,7 +199,7 @@ void RoadNetwork::viewGraph(string filename) {
         }
     }
     //Don't change
-    
+    /**
     vector<vector<int>> vect = stronglyConnected();
     int i = 10; double j = 0.1;
     for (auto part: vect){
@@ -211,6 +212,7 @@ void RoadNetwork::viewGraph(string filename) {
         i += 30;
         j += 0.5;
     }
+    **/
     canvas->writeToFile(filename);
 }
 
