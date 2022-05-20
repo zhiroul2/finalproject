@@ -199,7 +199,7 @@ void RoadNetwork::viewGraph(string filename) {
         }
     }
     //Don't change
-    /**
+    
     vector<vector<int>> vect = stronglyConnected();
     int i = 10; double j = 0.1;
     for (auto part: vect){
@@ -212,7 +212,7 @@ void RoadNetwork::viewGraph(string filename) {
         i += 30;
         j += 0.5;
     }
-    **/
+    
     canvas->writeToFile(filename);
 }
 
