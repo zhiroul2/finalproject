@@ -135,8 +135,11 @@ vector<int> RoadNetwork::shortestPath(int start, int end) {
  }
 
 void RoadNetwork::helper(vector<bool>& visited, int i , vector<int>& vect) {
+    //The node is always connected to itself
     vect.push_back(i);
+    //Marking the node as visited
     visited[i] = true;
+    //Looping through its adjList to see which other nodes are connected
     for (auto it : Nodelist_[i]->adjLists){
         if (!visited[it.end]){ 
             if (it.end < int(Nodelist_.size())){
@@ -148,13 +151,19 @@ void RoadNetwork::helper(vector<bool>& visited, int i , vector<int>& vect) {
 
 vector<vector<int>> RoadNetwork::stronglyConnected() {
     vector<vector<int>> vect;
+    //Getting the number of nodes stored in road network object
     int size = Nodelist_.size();
+    //Initialize the visited vector to false
     vector<bool> visited = vector<bool>(size, false);
     for (int i = 0; i < size; i++){
+        //If a particular node has not been visited and it does exist
         if (!visited[i] && Nodelist_[i] != NULL) {
             vector<int> temp;
+            //Using helper function to find the stronglyConnected component & putting them into a vector
             helper(visited, i, temp);
+            //Pushing back the vector that contains the nodes that are strongly connected to each other
             vect.push_back(temp);
+            //Marking the node as visited
             visited[i] = true;
         }
     }
